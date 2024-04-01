@@ -39,10 +39,10 @@ public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
     {
         var info = new OpenApiInfo()
         {
-            Title = "Cool Web API",
+            Title = $"КИССП-сервисы",
             Version = description.ApiVersion.ToString(),
-            Description = "A Cool Web API Sample.",
-            Contact = new OpenApiContact { Name = "Mosi Esmailpour", Email = "mo.esmp@gmail.com" },
+            Description = $"КИССП-API для взаимодействия сервисов MICRORET версии {description.ApiVersion}",
+            Contact = new OpenApiContact { Name = "Интерсофт", Email = "intersoftkgz@gmail.com" },
             License = new OpenApiLicense { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
         };
 

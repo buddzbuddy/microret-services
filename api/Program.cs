@@ -11,8 +11,9 @@ builder.Services.AddControllers().AddDataAnnotationsLocalization();
 builder.Services.AddAndConfigLocalization()
     .AddAndConfigApiVersioning()
     .AddAndConfigSwagger()
-    .AddAndConfigWeatherHttpClient(builder.Configuration);
+    .AddAndConfigWeatherHttpClient(builder.Configuration).ConfigureCors();
 
+builder.Services.AddCoreServices();
 builder.Services.AddTransient<ProblemDetailsFactory, CustomProblemDetailsFactory>();
 
 builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>

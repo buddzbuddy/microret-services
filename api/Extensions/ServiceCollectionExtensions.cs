@@ -1,5 +1,7 @@
-﻿using api.Infrastructure.HttpClients;
+﻿using api.Contracts.BL;
+using api.Infrastructure.HttpClients;
 using api.Infrastructure.Swagger;
+using api.Services.BL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
@@ -123,5 +125,19 @@ public static class ServiceCollectionExtensions
             });
 
         return services;
+    }
+
+    public static void ConfigureCors(this IServiceCollection services) =>
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                    builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
+
+    public static void AddCoreServices(this IServiceCollection services)
+    {
+        services.AddScoped<ICissaRefService, CissaRefServiceImpl>();
     }
 }
