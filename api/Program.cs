@@ -21,11 +21,11 @@ builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>
 var app = builder.Build();
 
 app.UseApiExceptionHandling();
-/*app.Use((context, next) =>
+app.Use((context, next) =>
 {
     context.Request.EnableBuffering();
     return next();
-});*/
+});
 
 app.UseRequestLocalization();
 
