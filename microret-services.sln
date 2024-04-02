@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		nginx.conf = nginx.conf
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api.Tests", "api.Tests\api.Tests.csproj", "{B01048EC-1C65-4756-BED6-6295262181FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A3477C1C-AE3E-4982-8BFA-FDD6C2F33E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3477C1C-AE3E-4982-8BFA-FDD6C2F33E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3477C1C-AE3E-4982-8BFA-FDD6C2F33E0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B01048EC-1C65-4756-BED6-6295262181FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B01048EC-1C65-4756-BED6-6295262181FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B01048EC-1C65-4756-BED6-6295262181FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B01048EC-1C65-4756-BED6-6295262181FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

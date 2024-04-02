@@ -16,7 +16,7 @@ namespace api.Apis.V1.Controllers
             cissaRefSvc = cissaRefService;
         }
 
-        [HttpGet("get-gmi")]
+        [HttpGet("get-gmi/{year}/{month}")]
         public async Task<IActionResult> GetGMI(int year, int month)
         {
             var requestModel = new gmiRequestDTO { year = year, month = month };
