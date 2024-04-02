@@ -1,4 +1,5 @@
 using api.Contracts.BL;
+using api.Domain;
 using api.Models.BL;
 using api.Tests.Infrastructure;
 using FluentAssertions;
@@ -29,6 +30,22 @@ namespace api.Tests.Systems.Services
             //Assert
             result.Should().Be(expectedResult);
             _output.WriteLine(result.ToString());
+        }
+
+        [Fact]
+        public async Task GetGMI_WhenCalled_WithWrongInputs_Throws_NoData()
+        {
+            //Arrange
+            string expectedErrorMessage = "Wrong input data";
+            int year = DateTime.Today.Year + 2; int month = 1;
+            var requestDTO = new gmiRequestDTO { year = year, month = month };
+            var cissaRefSvcMock = new Mock<ICissaRefService>();
+            cissaRefSvcMock.Setup(svc => svc.GetGMI(requestDTO)).ThrowsAsync(new DomainException(expectedErrorMessage));
+
+            //Act & Assert
+            var ex = await Assert.ThrowsAsync<DomainException>(async () => await cissaRefSvcMock.Object.GetGMI(requestDTO));
+            ex.Message.Should().Be(expectedErrorMessage);
+            _output.WriteLine(ex.Message);
         }
     }
 }
