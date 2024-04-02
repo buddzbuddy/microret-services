@@ -1,12 +1,18 @@
 using api.Contracts.BL;
 using api.Models.BL;
+using api.Tests.Infrastructure;
 using FluentAssertions;
 using Moq;
+using Xunit.Abstractions;
 
 namespace api.Tests.Systems.Services
 {
-    public class CissaRefServiceTests
+    public class CissaRefServiceTests : TestUtils
     {
+        public CissaRefServiceTests(ITestOutputHelper output) : base(output)
+        {
+        }
+
         [Fact]
         public async Task GetGMI_WhenCalled_Returns_Data()
         {
@@ -22,6 +28,7 @@ namespace api.Tests.Systems.Services
 
             //Assert
             result.Should().Be(expectedResult);
+            _output.WriteLine(result.ToString());
         }
     }
 }
