@@ -3,7 +3,7 @@
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
 EXPOSE 5000
-
+RUN sed -i 's/TLSv1.2/TLSv1.0/g' /etc/ssl/openssl.cnf
 ENV ASPNETCORE_URLS=http://+:5000
 
 RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app

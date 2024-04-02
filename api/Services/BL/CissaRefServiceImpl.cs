@@ -3,6 +3,7 @@ using api.Domain;
 using api.Models.BL;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System;
 
 namespace api.Services.BL
@@ -10,12 +11,15 @@ namespace api.Services.BL
     public class CissaRefServiceImpl : ICissaRefService
     {
         private readonly IConfiguration _configuration;
-        public CissaRefServiceImpl(IConfiguration configuration) {
+        private readonly ILogger<CissaRefServiceImpl> _logger;
+        public CissaRefServiceImpl(IConfiguration configuration, ILogger<CissaRefServiceImpl> logger) {
             _configuration = configuration;
+            _logger = logger;
         }
         public async Task<double> GetGMI(gmiRequestDTO requestDTO)
         {
             var connectionString = _configuration.GetConnectionString("cissaDb");
+            _logger.LogInformation("connectionString: {0}", connectionString);
             using var conn = new SqlConnection(connectionString);
             using var cmd = conn.CreateCommand();
             cmd.CommandTimeout = 10;
