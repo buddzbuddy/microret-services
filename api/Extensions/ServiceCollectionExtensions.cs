@@ -1,7 +1,9 @@
 ﻿using api.Contracts.BL;
+using api.Contracts.BL.UBK;
 using api.Infrastructure.HttpClients;
 using api.Infrastructure.Swagger;
 using api.Services.BL;
+using api.Services.BL.UBK;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
@@ -139,5 +141,7 @@ public static class ServiceCollectionExtensions
     public static void AddCoreServices(this IServiceCollection services)
     {
         services.AddScoped<ICissaRefService, CissaRefServiceImpl>();
+        services.AddScoped<IUbkDataService, UbkDataServiceImpl>();
+        services.AddScoped<IUbkService, UbkServiceImpl>();
     }
 }
