@@ -143,5 +143,6 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ICissaRefService, CissaRefServiceImpl>();
         services.AddScoped<IUbkDataService, UbkDataServiceImpl>();
         services.AddScoped<IUbkService, UbkServiceImpl>();
+        services.AddScoped<IUbkVerifier, UbkVerifierImpl>();
     }
 }
