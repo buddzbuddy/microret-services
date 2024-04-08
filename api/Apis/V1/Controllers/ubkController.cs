@@ -29,6 +29,6 @@ namespace api.Apis.V1.Controllers
         }
 
         [HttpGet("get-hello")]
-        public string getHello() => "Hello New";
+        public string getHello() => "Hello New First change";
     }
 }
