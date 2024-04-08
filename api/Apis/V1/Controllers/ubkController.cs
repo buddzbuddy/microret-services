@@ -27,5 +27,8 @@ namespace api.Apis.V1.Controllers
             var result = await ubkService.CreateApplication(data.ToString());
             return result;
         }
+
+        [HttpGet("get-hello")]
+        public string getHello() => "Hello New Second change";
     }
 }
