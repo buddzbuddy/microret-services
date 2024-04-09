@@ -144,5 +144,6 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IUbkDataService, UbkDataServiceImpl>();
         services.AddScoped<IUbkService, UbkServiceImpl>();
         services.AddScoped<IUbkVerifier, UbkVerifierImpl>();
+        services.AddScoped<IUbkInputDataParser, UbkInputDataParserImpl>();
     }
 }
