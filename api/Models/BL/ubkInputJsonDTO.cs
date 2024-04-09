@@ -2,8 +2,10 @@
 {
     public class ubkInputJsonDTO
     {
+        public ApplicantDTO? Applicant { get; set; }
+        public FamilyMemberDTO[]? FamilyMembers { get; set; }
 
-        public class Applicant : PersonDetailsInfo
+        public class ApplicantDTO : PersonDetailsInfo
         {
             
         }
