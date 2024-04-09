@@ -79,6 +79,33 @@ namespace api.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Empty JSON received..
+        /// </summary>
+        public static string JsonEmptyError {
+            get {
+                return ResourceManager.GetString("JsonEmptyError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to JSON is invalid.
+        /// </summary>
+        public static string JsonInvalidError {
+            get {
+                return ResourceManager.GetString("JsonInvalidError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parsed JSON-object is null..
+        /// </summary>
+        public static string JsonObjectNullError {
+            get {
+                return ResourceManager.GetString("JsonObjectNullError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximum length of {0} is &apos;{1}&apos; characters..
         /// </summary>
         public static string MaxLengthError {

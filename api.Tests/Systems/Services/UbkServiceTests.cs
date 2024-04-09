@@ -33,7 +33,8 @@ namespace api.Tests.Systems.Services
             mockDataSvc.Setup(s => s.InsertSrcJsonToDb(json_data)).ReturnsAsync(expectedResult);
             var mockVerifier = new Mock<IUbkVerifier>();
             mockVerifier.Setup(s => s.VerifySrcJson(json_data));
-            IUbkService sut = new UbkServiceImpl(mockDataSvc.Object, mockVerifier.Object);
+            var dataParser = Mock.Of<IUbkInputDataParser>();
+            IUbkService sut = new UbkServiceImpl(mockDataSvc.Object, mockVerifier.Object, dataParser);
 
             //Act
             var result  = await sut.CreateApplication(json_data);

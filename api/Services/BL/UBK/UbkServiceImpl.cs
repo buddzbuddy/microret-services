@@ -8,15 +8,20 @@ namespace api.Services.BL.UBK
     {
         private readonly IUbkDataService _dataSvc;
         private readonly IUbkVerifier _ubkVerifier;
-        public UbkServiceImpl(IUbkDataService dataSvc, IUbkVerifier ubkVerifier)
+        private readonly IUbkInputDataParser _dataParser;
+        public UbkServiceImpl(IUbkDataService dataSvc, IUbkVerifier ubkVerifier, IUbkInputDataParser dataParser)
         {
             _dataSvc = dataSvc;
             _ubkVerifier = ubkVerifier;
+            _dataParser = dataParser;
         }
 
         public async Task<int> CreateApplication(string json)
         {
             _ubkVerifier.VerifySrcJson(json);
+            var parsedInputData = _dataParser.ParseFromJson(json);
+            _ubkVerifier.VerifyParsedJsonData(parsedInputData);
+
             return await _dataSvc.InsertSrcJsonToDb(json);
         }
     }

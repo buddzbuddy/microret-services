@@ -24,10 +24,10 @@ public static class ServiceCollectionExtensions
     {
         services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-        var supportedCultures = new List<CultureInfo> { new("en"), new("fa") };
+        var supportedCultures = new List<CultureInfo> { new("ru"), new("en"), new("fa") };
         services.Configure<RequestLocalizationOptions>(options =>
         {
-            options.DefaultRequestCulture = new RequestCulture("fa");
+            options.DefaultRequestCulture = new RequestCulture("ru");
             options.SupportedCultures = supportedCultures;
             options.SupportedUICultures = supportedCultures;
         });
