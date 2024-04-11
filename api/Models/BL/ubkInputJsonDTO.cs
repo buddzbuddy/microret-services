@@ -12,6 +12,13 @@
 
         public class FamilyMemberDTO : PersonDetailsInfo
         {
+            public string? pin { get; set; }
+            public string? lastname { get; set; }
+            public string? firstname { get; set; }
+            public string? patronymic { get; set; }
+            public string? role { get; set; }
+            public int? roleId { get; set; }
+
             public BirthActByPinInfoDTO? BirthActByPinInfo { get; set; }
         }
 
@@ -30,9 +37,8 @@
     }
     
 
-    public class PassportDataInfoDTO
+    public class PassportDataInfoDTO : PassportOnlyDTO
     {
-        public string? Pin { get; set; }
         public string? Surname { get; set; }
         public string? Name { get; set; }
         public string? Patronymic { get; set; }
@@ -41,12 +47,7 @@
         public string? PatronymicLatin { get;set; }
         public string? Nationality { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public string? PassportSeries { get; set; }
-        public string? PassportNumber { get; set; }
-        public string? VoidStatus { get; set; }
-        public string? PassportAuthority { get; set; }
-        public DateTime? IssuedDate { get; set; }
-        public DateTime? ExpiredDate { get; set; }
+        
         public string? VoidMotiv { get; set; }
         public string? FamilyStatus { get; set; }
         public string? Gender { get; set; }
@@ -65,6 +66,16 @@
         public int? PassportServiceDataID { get; set; }
         public string? ApplicantType { get; set; }
         public string? PhoneNumber { get; set; }
+    }
+    public abstract class PassportOnlyDTO
+    {
+        public string? Pin { get; set; }
+        public string? PassportSeries { get; set; }
+        public string? PassportNumber { get; set; }
+        public string? VoidStatus { get; set; }
+        public string? PassportAuthority { get; set; }
+        public DateTime? IssuedDate { get; set; }
+        public DateTime? ExpiredDate { get; set; }
     }
     public class MarriageActInfoDTO
     {
@@ -142,7 +153,6 @@
         public string? ChildFirstName { get; set; }
         public string? ChildPatronymic { get; set; }
         public int? ChildGender { get; set; }
-        public DateTime? ChildDFrom { get; set; }
         public string? ChildPlaceOfBirth { get; set; }
         public string? MotherPin { get; set; }
         public string? MotherSurname { get; set; }

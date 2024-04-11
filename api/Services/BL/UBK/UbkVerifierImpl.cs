@@ -9,11 +9,18 @@ namespace api.Services.BL.UBK
 {
     public class UbkVerifierImpl : IUbkVerifier
     {
+        private readonly IPersonalIdentityVerifier _identityVerifier;
+
+        public UbkVerifierImpl(IPersonalIdentityVerifier identityVerifier)
+        {
+            _identityVerifier = identityVerifier;
+        }
         public void VerifySrcJson(string? jsonData)
         {
             try
             {
-                if (string.IsNullOrEmpty(jsonData)) throw new DomainException(ErrorMessageResource.JsonEmptyError);
+                if (string.IsNullOrEmpty(jsonData))
+                    throw new DomainException(ErrorMessageResource.JsonEmptyError);
                 var jObject = JObject.Parse(jsonData);
                 if(jObject == null || jObject.Count == 0)
                 {
@@ -35,8 +42,12 @@ namespace api.Services.BL.UBK
         {
             if (parsedDataJson == null)
                 throw new DomainException(ErrorMessageResource.JsonObjectNullError);
+            _identityVerifier.VerifyApplicant(parsedDataJson.Applicant);
+            _identityVerifier.VerifyFamilyMembers(parsedDataJson.FamilyMembers);
 
+            //TODO: 
         }
 
+        
     }
 }

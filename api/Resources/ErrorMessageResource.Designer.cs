@@ -70,11 +70,29 @@ namespace api.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Providedd illegal data.
+        /// </summary>
+        public static string IllegalDataProvidedError {
+            get {
+                return ResourceManager.GetString("IllegalDataProvidedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email format is not valid..
         /// </summary>
         public static string InvalidEmailError {
             get {
                 return ResourceManager.GetString("InvalidEmailError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Length should be {0} characters.
+        /// </summary>
+        public static string InvalidStringLengthError {
+            get {
+                return ResourceManager.GetString("InvalidStringLengthError", resourceCulture);
             }
         }
         
@@ -115,6 +133,33 @@ namespace api.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provided null data.
+        /// </summary>
+        public static string NullDataProvidedError {
+            get {
+                return ResourceManager.GetString("NullDataProvidedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passport is expired.
+        /// </summary>
+        public static string PassportExpiredError {
+            get {
+                return ResourceManager.GetString("PassportExpiredError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Birthdate section couldn&apos;t be extracted. Please make sure that PIN data is correct.
+        /// </summary>
+        public static string PinBirthDateSectionIllegalError {
+            get {
+                return ResourceManager.GetString("PinBirthDateSectionIllegalError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is required..
         /// </summary>
         public static string RequiredError {
@@ -138,6 +183,24 @@ namespace api.Resources {
         public static string StringLengthError {
             get {
                 return ResourceManager.GetString("StringLengthError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The string should contain only digits.
+        /// </summary>
+        public static string StringShouldContainDigitsError {
+            get {
+                return ResourceManager.GetString("StringShouldContainDigitsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The string should not contain digits.
+        /// </summary>
+        public static string StringShouldNotContainDigitsError {
+            get {
+                return ResourceManager.GetString("StringShouldNotContainDigitsError", resourceCulture);
             }
         }
     }

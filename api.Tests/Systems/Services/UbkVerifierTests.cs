@@ -54,7 +54,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifySrcJson_ThrowsObjectNullDataJsonError()
+        public void WhenCalled_VerifySrcJson_ThrowsObjectNullError()
         {
             //Arrange
             ubkInputJsonDTO? nullJson = null;
@@ -67,6 +67,38 @@ namespace api.Tests.Systems.Services
 
             //Assert
             ex.Message.Should().Be(ErrorMessageResource.JsonObjectNullError);
+        }
+
+        [Fact]
+        public void WhenCalled_VerifySrcJson_ThrowsApplicantNullError()
+        {
+            //Arrange
+            ubkInputJsonDTO? nullJson = new();
+            var application = ApplicationHelper.GetWebApplication();
+            using var scope = application.Services.CreateScope();
+            var sut = scope.ServiceProvider.GetRequiredService<IUbkVerifier>();
+
+            //Act
+            var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyParsedJsonData(nullJson));
+
+            //Assert
+            ex.ParamName.Should().Be(nameof(nullJson.Applicant));
+        }
+
+        [Fact]
+        public void WhenCalled_VerifySrcJson_ThrowsFamilyMembersNullOrEmptyError()
+        {
+            //Arrange
+            ubkInputJsonDTO? nullJson = new() { Applicant = new ()};
+            var application = ApplicationHelper.GetWebApplication();
+            using var scope = application.Services.CreateScope();
+            var sut = scope.ServiceProvider.GetRequiredService<IUbkVerifier>();
+
+            //Act
+            var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyParsedJsonData(nullJson));
+
+            //Assert
+            ex.ParamName.Should().Be(nameof(nullJson.FamilyMembers));
         }
 
         [Fact]
