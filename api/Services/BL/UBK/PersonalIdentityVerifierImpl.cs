@@ -37,22 +37,16 @@ namespace api.Services.BL.UBK
 
             foreach (var famlilyMember in familyMembers)
             {
+                StaticReferences.CheckNulls(famlilyMember, "pin", "lastname", "firstname",
+                    "role", "roleId");
+
                 _pinVerifier.VerifyPin(famlilyMember.pin);
                 _personDataVerifier.VerifyNames(
                     famlilyMember.lastname,
                     famlilyMember.firstname,
                     famlilyMember.patronymic);
 
-                if(string.IsNullOrEmpty(famlilyMember.role))
-                    throw new ArgumentNullException(nameof(famlilyMember.role),
-                    ErrorMessageResource.NullDataProvidedError);
-                if(famlilyMember.roleId == null || famlilyMember.roleId <= 0)
-                    throw new ArgumentNullException(nameof(famlilyMember.roleId),
-                    ErrorMessageResource.NullDataProvidedError);
-
-                var birthDate = StaticReferences.ExtractBirthDate(famlilyMember.pin!);
-
-                var age = StaticReferences.CalcAgeForToday(birthDate);
+                var age = StaticReferences.CalcAgeFromPinForToday(famlilyMember.pin);
                 if (age >= StaticReferences.ADULT_AGE_STARTS_FROM)
                     verifyPassportAndPersonInfo(famlilyMember.PassportDataInfo);
                 else
@@ -62,13 +56,9 @@ namespace api.Services.BL.UBK
         }
         private void verifyPassportAndPersonInfo(PassportDataInfoDTO? passportData)
         {
-            if (passportData == null)
-                throw new ArgumentNullException(nameof(passportData),
-                    ErrorMessageResource.NullDataProvidedError);
             _passportDataVerifier.VerifyPassportData(passportData);
-            _personDataVerifier.VerifyNames(passportData.Surname, passportData.Name,
-                passportData.Patronymic);
-            _passportDataVerifier.VerifyPassportExpiration(passportData);
+            _personDataVerifier.VerifyNames(passportData?.Surname, passportData?.Name,
+                passportData?.Patronymic);
         }
         private void verifyBirthAct(BirthActByPinInfoDTO? birthAct)
         {
@@ -114,9 +104,8 @@ namespace api.Services.BL.UBK
             if (address == null)
                 throw new ArgumentNullException(nameof(address),
                     ErrorMessageResource.NullDataProvidedError);
-            StaticReferences.CheckNulls(address, "District", "DistrictId", "DistrictCode",
-                "City", "CityId", "CityCode", "Street", "StreetId", "StreetCode",
-                "House", "Flat", "PhoneNumber");
+            StaticReferences.CheckNulls(address, "State", "StateId", "StateCode", "Region", "RegionId",
+                "RegionCode", "Street", "StreetId", "StreetCode", "House");
         }
     }
 }

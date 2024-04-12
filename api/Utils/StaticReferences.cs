@@ -8,15 +8,17 @@ namespace api.Utils
     public static class StaticReferences
     {
         const string PIN_BIRTHDATE_SECTION_FORMAT = "ddMMyyyy";
-        public static DateTime ExtractBirthDate(string pin)
+        public static DateTime ExtractBirthDate(string? pin)
         {
+            if(string.IsNullOrWhiteSpace(pin)) throw new ArgumentNullException(nameof(pin),
+                ErrorMessageResource.NullDataProvidedError);
             if(pin.Length != 14) throw new ArgumentException(string.Format(
                 ErrorMessageResource.InvalidStringLengthError, 14), nameof(pin));
             var birthDateStr = pin.Substring(1, 8);
             return GetDate(birthDateStr, PIN_BIRTHDATE_SECTION_FORMAT);
         }
 
-        public static int CalcAgeFromPinForToday(string pin) => CalcAgeForToday(ExtractBirthDate(pin));
+        public static int CalcAgeFromPinForToday(string? pin) => CalcAgeForToday(ExtractBirthDate(pin));
 
         public static int CalcAgeForToday(DateTime birthDate)
         {
@@ -59,7 +61,7 @@ namespace api.Utils
         }
         public static void CheckNulls<T>(T? myObject, params string[]? onlySpecificProps)
         {
-            if (IsAnyNullOrEmpty(myObject, out string[] foundNullPropNames))
+            if (IsAnyNullOrEmpty(myObject, out string[] foundNullPropNames, onlySpecificProps))
             {
                 if (foundNullPropNames.Length > 0)
                 {

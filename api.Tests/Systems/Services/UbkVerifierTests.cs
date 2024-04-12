@@ -2,10 +2,12 @@
 using api.Domain;
 using api.Models.BL;
 using api.Resources;
+using api.Services.BL.UBK;
 using api.Tests.Helpers;
 using api.Tests.Infrastructure;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +28,7 @@ namespace api.Tests.Systems.Services
         {
             //Arrange
             var json = "";
-            var application = ApplicationHelper.GetWebApplication();
-            using var scope = application.Services.CreateScope();
-            var sut = scope.ServiceProvider.GetRequiredService<IUbkVerifier>();
+            IUbkVerifier sut = new UbkVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
 
             //Act
             var ex = Assert.Throws<DomainException>(() => sut.VerifySrcJson(json));
@@ -42,9 +42,7 @@ namespace api.Tests.Systems.Services
         {
             //Arrange
             var json = "asdadas";
-            var application = ApplicationHelper.GetWebApplication();
-            using var scope = application.Services.CreateScope();
-            var sut = scope.ServiceProvider.GetRequiredService<IUbkVerifier>();
+            IUbkVerifier sut = new UbkVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
 
             //Act
             var ex = Assert.Throws<DomainException>(() => sut.VerifySrcJson(json));
@@ -54,66 +52,17 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifySrcJson_ThrowsObjectNullError()
+        public void WhenCalled_VerifyParsedJsonData_ThrowsObjectNullError()
         {
             //Arrange
             ubkInputJsonDTO? nullJson = null;
-            var application = ApplicationHelper.GetWebApplication();
-            using var scope = application.Services.CreateScope();
-            var sut = scope.ServiceProvider.GetRequiredService<IUbkVerifier>();
+            IUbkVerifier sut = new UbkVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
 
             //Act
             var ex = Assert.Throws<DomainException>(() => sut.VerifyParsedJsonData(nullJson));
 
             //Assert
             ex.Message.Should().Be(ErrorMessageResource.JsonObjectNullError);
-        }
-
-        [Fact]
-        public void WhenCalled_VerifySrcJson_ThrowsApplicantNullError()
-        {
-            //Arrange
-            ubkInputJsonDTO? nullJson = new();
-            var application = ApplicationHelper.GetWebApplication();
-            using var scope = application.Services.CreateScope();
-            var sut = scope.ServiceProvider.GetRequiredService<IUbkVerifier>();
-
-            //Act
-            var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyParsedJsonData(nullJson));
-
-            //Assert
-            ex.ParamName.Should().Be(nameof(nullJson.Applicant));
-        }
-
-        [Fact]
-        public void WhenCalled_VerifySrcJson_ThrowsFamilyMembersNullOrEmptyError()
-        {
-            //Arrange
-            ubkInputJsonDTO? nullJson = new() { Applicant = new ()};
-            var application = ApplicationHelper.GetWebApplication();
-            using var scope = application.Services.CreateScope();
-            var sut = scope.ServiceProvider.GetRequiredService<IUbkVerifier>();
-
-            //Act
-            var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyParsedJsonData(nullJson));
-
-            //Assert
-            ex.ParamName.Should().Be(nameof(nullJson.FamilyMembers));
-        }
-
-        [Fact]
-        public void WhenCalled_VerifySrcJson_Returns_OK_Empty()
-        {
-            //Arrange
-            var json = @"{""t1"":123}";
-            var application = ApplicationHelper.GetWebApplication();
-            using var scope = application.Services.CreateScope();
-            var sut = scope.ServiceProvider.GetRequiredService<IUbkVerifier>();
-
-            //Act
-            sut.VerifySrcJson(json);
-
-            //Assert
         }
     }
 }

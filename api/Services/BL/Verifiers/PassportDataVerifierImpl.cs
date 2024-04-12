@@ -12,16 +12,20 @@ namespace api.Services.BL.Verifiers
         {
             _pinVerifier = pinVerifier;
         }
-        public void VerifyPassportData(PassportOnlyDTO passport)
+        public void VerifyPassportData(PassportOnlyDTO? passport)
         {
+            if (passport == null)
+                throw new ArgumentNullException(nameof(passport),
+                    ErrorMessageResource.NullDataProvidedError);
             _pinVerifier.VerifyPin(passport.Pin);
             if(string.IsNullOrEmpty(passport.PassportSeries)) 
                 throw new ArgumentNullException(nameof(passport.PassportSeries),
                     ErrorMessageResource.NullDataProvidedError);
+            verifyPassportExpiration(passport);
         }
 
         const int PASSPORT_DEFAULT_VALID_YEARS = 10;
-        public void VerifyPassportExpiration(PassportOnlyDTO passport)
+        private void verifyPassportExpiration(PassportOnlyDTO passport)
         {
             if (passport.IssuedDate == null)
                 throw new ArgumentNullException(nameof(passport.IssuedDate),
