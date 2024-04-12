@@ -1,7 +1,7 @@
-﻿using api.Contracts.BL.PassportData;
+﻿using api.Contracts.BL.Verifiers;
 using System.Linq;
 
-namespace api.Services.BL.PassportData
+namespace api.Services.BL.Verifiers
 {
     public class PersonDataVerifierImpl : IPersonDataVerifier
     {

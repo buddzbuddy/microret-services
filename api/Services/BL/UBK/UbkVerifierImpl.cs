@@ -10,10 +10,12 @@ namespace api.Services.BL.UBK
     public class UbkVerifierImpl : IUbkVerifier
     {
         private readonly IPersonalIdentityVerifier _identityVerifier;
+        private readonly IPropertyVerifier _propertyVerifier;
 
-        public UbkVerifierImpl(IPersonalIdentityVerifier identityVerifier)
+        public UbkVerifierImpl(IPersonalIdentityVerifier identityVerifier, IPropertyVerifier propertyVerifier)
         {
             _identityVerifier = identityVerifier;
+            _propertyVerifier = propertyVerifier;
         }
         public void VerifySrcJson(string? jsonData)
         {
@@ -45,7 +47,8 @@ namespace api.Services.BL.UBK
             _identityVerifier.VerifyApplicant(parsedDataJson.Applicant);
             _identityVerifier.VerifyFamilyMembers(parsedDataJson.FamilyMembers);
 
-            //TODO: 
+            //TODO: Verify all props
+            _propertyVerifier.VerifyParsedData(parsedDataJson.Applicant);
         }
 
         

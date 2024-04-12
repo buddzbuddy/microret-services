@@ -1,4 +1,7 @@
-﻿namespace api.Models.BL
+﻿using Newtonsoft.Json;
+using System.Globalization;
+
+namespace api.Models.BL
 {
     public class ubkInputJsonDTO
     {
@@ -12,7 +15,7 @@
 
         public class FamilyMemberDTO : PersonDetailsInfo
         {
-            public string? pin { get; set; }
+            public new string? pin { get; set; }
             public string? lastname { get; set; }
             public string? firstname { get; set; }
             public string? patronymic { get; set; }
@@ -24,6 +27,7 @@
 
         public abstract class PersonDetailsInfo
         {
+            public string? pin { get; set; }
             public PassportDataInfoDTO? PassportDataInfo { get; set; }
             public MarriageActInfoDTO? MarriageActInfo { get; set; }
             public ResidentialAddressDTO? ResidentialAddress { get; set; }
@@ -190,7 +194,6 @@
         public string? DocNum { get; set; }
         public DateTime? RegDate { get; set; }
         public DateTime? TermDate { get; set; }
-        public int? KADASTRDataID { get; set; }
     }
     public class AnimalDataDTO
     {
@@ -207,11 +210,11 @@
         public string? Brand { get; set; }
         public string? Model { get; set; }
         public string? Steering { get; set; }
-        public string? Year { get; set; }
+        public int? Year { get; set; }
         public string? Color { get; set; }
         public string? BodyNo { get; set; }
         public string? Vin { get; set; }
         public int? EngineVolume { get; set; }
-        public DateTime? DateFrom { get; set; }
+        public string? DateFrom { get; set; }
     }
 }

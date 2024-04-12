@@ -1,5 +1,5 @@
 ﻿using api.Contracts.BL;
-using api.Contracts.BL.PassportData;
+using api.Contracts.BL.Verifiers;
 using api.Contracts.BL.UBK;
 using api.Domain;
 using api.Models.BL;
@@ -24,12 +24,11 @@ namespace api.Services.BL.UBK
         {
             if (applicant == null) throw new ArgumentNullException(nameof(applicant),
                 ErrorMessageResource.NullDataProvidedError);
+            _pinVerifier.VerifyPin(applicant.pin);
 
             verifyPassportAndPersonInfo(applicant.PassportDataInfo);
+            verifyFactAddress(applicant.ResidentialAddress);
         }
-
-
-        const int ADULT_AGE_STARTS_FROM = 18;
         public void VerifyFamilyMembers(ubkInputJsonDTO.FamilyMemberDTO[]? familyMembers)
         {
             if (familyMembers == null || familyMembers.Length == 0)
@@ -54,15 +53,13 @@ namespace api.Services.BL.UBK
                 var birthDate = StaticReferences.ExtractBirthDate(famlilyMember.pin!);
 
                 var age = StaticReferences.CalcAgeForToday(birthDate);
-                if (age >= ADULT_AGE_STARTS_FROM)
+                if (age >= StaticReferences.ADULT_AGE_STARTS_FROM)
                     verifyPassportAndPersonInfo(famlilyMember.PassportDataInfo);
                 else
                     verifyBirthAct(famlilyMember.BirthActByPinInfo);
 
             }
         }
-
-
         private void verifyPassportAndPersonInfo(PassportDataInfoDTO? passportData)
         {
             if (passportData == null)
@@ -73,7 +70,6 @@ namespace api.Services.BL.UBK
                 passportData.Patronymic);
             _passportDataVerifier.VerifyPassportExpiration(passportData);
         }
-
         private void verifyBirthAct(BirthActByPinInfoDTO? birthAct)
         {
             if (birthAct == null)
@@ -112,6 +108,15 @@ namespace api.Services.BL.UBK
 
             //TODO: Father's data verify by need
 
+        }
+        private void verifyFactAddress(ResidentialAddressDTO? address)
+        {
+            if (address == null)
+                throw new ArgumentNullException(nameof(address),
+                    ErrorMessageResource.NullDataProvidedError);
+            StaticReferences.CheckNulls(address, "District", "DistrictId", "DistrictCode",
+                "City", "CityId", "CityCode", "Street", "StreetId", "StreetCode",
+                "House", "Flat", "PhoneNumber");
         }
     }
 }
