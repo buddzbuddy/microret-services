@@ -4,6 +4,6 @@ namespace api.Contracts.BL.UBK
 {
     public interface IUbkInputDataParser
     {
-        ubkInputJsonDTO ParseFromJson(string json);
+        ubkInputJsonDTO? ParseFromJson(string json);
     }
 }
