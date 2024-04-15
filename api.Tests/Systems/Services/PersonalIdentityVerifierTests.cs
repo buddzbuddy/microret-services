@@ -1,5 +1,6 @@
 ﻿using api.Contracts.BL.UBK;
 using api.Contracts.BL.Verifiers;
+using api.Contracts.Helpers;
 using api.Models.BL;
 using api.Services.BL.UBK;
 using api.Tests.Helpers;
@@ -28,7 +29,7 @@ namespace api.Tests.Systems.Services
             ubkInputJsonDTO.ApplicantDTO? applicant = null;
             IPersonalIdentityVerifier sut =
                 new PersonalIdentityVerifierImpl(Mock.Of<IPassportDataVerifier>(),
-                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>());
+                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>(), Mock.Of<IDataHelper>());
 
             //Act
             var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyApplicant(applicant));
@@ -44,7 +45,7 @@ namespace api.Tests.Systems.Services
             ubkInputJsonDTO.ApplicantDTO applicant = new() { };
             IPersonalIdentityVerifier sut =
                 new PersonalIdentityVerifierImpl(Mock.Of<IPassportDataVerifier>(),
-                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>());
+                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>(), Mock.Of<IDataHelper>());
 
             //Act
             var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyApplicant(applicant));
@@ -62,7 +63,7 @@ namespace api.Tests.Systems.Services
             };
             IPersonalIdentityVerifier sut =
                 new PersonalIdentityVerifierImpl(Mock.Of<IPassportDataVerifier>(),
-                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>());
+                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>(), Mock.Of<IDataHelper>());
 
             //Act
             var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyApplicant(applicant));
@@ -79,7 +80,7 @@ namespace api.Tests.Systems.Services
             ubkInputJsonDTO.FamilyMemberDTO[]? familyMembers = null;
             IPersonalIdentityVerifier sut =
                 new PersonalIdentityVerifierImpl(Mock.Of<IPassportDataVerifier>(),
-                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>());
+                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>(), Mock.Of<IDataHelper>());
 
             //Act
             var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyFamilyMembers(familyMembers));
@@ -92,12 +93,12 @@ namespace api.Tests.Systems.Services
         public void WhenCalled_VerifyFamilyMembers_ThrowsFamilyMemberRoleNullError()
         {
             //Arrange
-            ubkInputJsonDTO.FamilyMemberDTO[] familyMembers = new ubkInputJsonDTO.FamilyMemberDTO[]
+            var familyMembers = new ubkInputJsonDTO.FamilyMemberDTO[]
             { new() { pin = "123", lastname = "some", firstname = "some", patronymic = "some",
                 roleId = 123 } };
             IPersonalIdentityVerifier sut =
                 new PersonalIdentityVerifierImpl(Mock.Of<IPassportDataVerifier>(),
-                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>());
+                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>(), Mock.Of<IDataHelper>());
 
             //Act
             var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyFamilyMembers(familyMembers));
@@ -111,19 +112,41 @@ namespace api.Tests.Systems.Services
         public void WhenCalled_VerifyFamilyMembers_ThrowsFamilyMemberRoleIdNullError()
         {
             //Arrange
-            ubkInputJsonDTO.FamilyMemberDTO[] familyMembers = new ubkInputJsonDTO.FamilyMemberDTO[]
+            var familyMembers = new ubkInputJsonDTO.FamilyMemberDTO[]
             { new() { pin = "123", lastname = "some", firstname = "some", patronymic = "some",
                 role = "some" } };
             IPersonalIdentityVerifier sut =
                 new PersonalIdentityVerifierImpl(Mock.Of<IPassportDataVerifier>(),
-                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>());
+                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>(), Mock.Of<IDataHelper>());
 
             //Act
             var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyFamilyMembers(familyMembers));
 
             //Assert
             var fMemItem = familyMembers[0];
-            ex.ParamName.Should().Contain(nameof(fMemItem.roleId));
+            ex.ParamName.Should().Be(nameof(fMemItem.roleId));
+        }
+
+        [Fact]
+        public void WhenCalled_VerifyFamilyMembers_ThrowsFamilyMemberBirthActNullError()
+        {
+            //Arrange
+            var pin = "123";
+            var familyMembers = new ubkInputJsonDTO.FamilyMemberDTO[]
+            { new() { pin = pin, lastname = "some", firstname = "some", patronymic = "some",
+                role = "some", roleId = 123 } };
+
+            var dataHelperMock = new Mock<IDataHelper>();
+            dataHelperMock.Setup(s => s.CalcAgeFromPinForToday(pin)).Returns(17);
+            IPersonalIdentityVerifier sut =
+                new PersonalIdentityVerifierImpl(Mock.Of<IPassportDataVerifier>(),
+                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>(), dataHelperMock.Object);
+
+            //Act
+            var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyFamilyMembers(familyMembers));
+
+            //Assert
+            ex.ParamName.Should().Be("birthAct");
         }
     }
 }

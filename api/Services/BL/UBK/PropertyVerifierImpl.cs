@@ -1,4 +1,5 @@
 ﻿using api.Contracts.BL.UBK;
+using api.Contracts.Helpers;
 using api.Models.BL;
 using api.Utils;
 
@@ -6,11 +7,18 @@ namespace api.Services.BL.UBK
 {
     public class PropertyVerifierImpl : IPropertyVerifier
     {
+        private readonly IDataHelper _dataHelper;
+
+        public PropertyVerifierImpl(IDataHelper dataHelper)
+        {
+            _dataHelper = dataHelper;
+        }
+
         public void VerifyParsedData(ubkInputJsonDTO.PersonDetailsInfo? personDetails)
         {
             if(personDetails == null) throw new ArgumentNullException(nameof(personDetails),
                 ErrorMessageResource.NullDataProvidedError);
-            var age = StaticReferences.CalcAgeFromPinForToday(personDetails.pin!);
+            var age = _dataHelper.CalcAgeFromPinForToday(personDetails.pin!);
             if(age >= StaticReferences.ADULT_AGE_STARTS_FROM)
             {
                 verifyMarriageData(personDetails.MarriageActInfo);

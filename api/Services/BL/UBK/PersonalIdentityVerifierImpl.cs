@@ -5,6 +5,7 @@ using api.Domain;
 using api.Models.BL;
 using api.Utils;
 using System.Linq;
+using api.Contracts.Helpers;
 
 namespace api.Services.BL.UBK
 {
@@ -13,12 +14,15 @@ namespace api.Services.BL.UBK
         private readonly IPassportDataVerifier _passportDataVerifier;
         private readonly IPersonDataVerifier _personDataVerifier;
         private readonly IPinVerifier _pinVerifier;
+        private readonly IDataHelper _dataHelper;
         public PersonalIdentityVerifierImpl(IPassportDataVerifier passportDataVerifier,
-            IPersonDataVerifier personDataVerifier, IPinVerifier pinVerifier)
+            IPersonDataVerifier personDataVerifier, IPinVerifier pinVerifier,
+            IDataHelper dataHelper)
         {
             _passportDataVerifier = passportDataVerifier;
             _personDataVerifier = personDataVerifier;
             _pinVerifier = pinVerifier;
+            _dataHelper = dataHelper;
         }
         public void VerifyApplicant(ubkInputJsonDTO.ApplicantDTO? applicant)
         {
@@ -46,7 +50,7 @@ namespace api.Services.BL.UBK
                     famlilyMember.firstname,
                     famlilyMember.patronymic);
 
-                var age = StaticReferences.CalcAgeFromPinForToday(famlilyMember.pin);
+                var age = _dataHelper.CalcAgeFromPinForToday(famlilyMember.pin);
                 if (age >= StaticReferences.ADULT_AGE_STARTS_FROM)
                     verifyPassportAndPersonInfo(famlilyMember.PassportDataInfo);
                 else
@@ -66,27 +70,14 @@ namespace api.Services.BL.UBK
                 throw new ArgumentNullException(nameof(birthAct),
                     ErrorMessageResource.NullDataProvidedError);
 
-            if(birthAct.ActDate == null)
-                throw new ArgumentNullException(nameof(birthAct.ActDate),
-                    ErrorMessageResource.NullDataProvidedError);
-            if (string.IsNullOrEmpty(birthAct.ActNumber))
-                throw new ArgumentNullException(nameof(birthAct.ActNumber),
-                    ErrorMessageResource.NullDataProvidedError);
-            if (string.IsNullOrEmpty(birthAct.ActGovUnit))
-                throw new ArgumentNullException(nameof(birthAct.ActGovUnit),
-                    ErrorMessageResource.NullDataProvidedError);
+            StaticReferences.CheckNulls(birthAct, "ActDate", "ActNumber", "ActGovUnit", "ChildSurname",
+                "ChildFirstName", "ChildGender", "ChildPlaceOfBirth", "MotherPin", "MotherSurname",
+                "MotherFirstName", "MotherNationality", "MotherCitizenship");
 
             _personDataVerifier.VerifyNames(
                     birthAct.ChildSurname,
                     birthAct.ChildFirstName,
                     birthAct.ChildPatronymic);
-
-            if (birthAct.ChildGender == null)
-                throw new ArgumentNullException(nameof(birthAct.ChildGender),
-                    ErrorMessageResource.NullDataProvidedError);
-            if (string.IsNullOrEmpty(birthAct.ChildPlaceOfBirth))
-                throw new ArgumentNullException(nameof(birthAct.ChildPlaceOfBirth),
-                    ErrorMessageResource.NullDataProvidedError);
 
             _pinVerifier.VerifyPin(birthAct.MotherPin);
             _personDataVerifier.VerifyNames(
@@ -94,9 +85,16 @@ namespace api.Services.BL.UBK
                     birthAct.MotherFirstName,
                     birthAct.MotherPatronymic);
 
-            //TODO: MotherNationality, MotherCitizenship check later
-
-            //TODO: Father's data verify by need
+            if (!string.IsNullOrEmpty(birthAct.FatherPin))
+            {
+                StaticReferences.CheckNulls(birthAct, "FatherSurname", "FatherFirstName",
+                    "FatherNationality", "FatherCitizenship");
+                _pinVerifier.VerifyPin(birthAct.FatherPin);
+                _personDataVerifier.VerifyNames(
+                        birthAct.FatherSurname,
+                        birthAct.FatherFirstName,
+                        birthAct.FatherPatronymic);
+            }
 
         }
         private void verifyFactAddress(ResidentialAddressDTO? address)

@@ -7,27 +7,10 @@ namespace api.Utils
 {
     public static class StaticReferences
     {
-        const string PIN_BIRTHDATE_SECTION_FORMAT = "ddMMyyyy";
-        public static DateTime ExtractBirthDate(string? pin)
-        {
-            if(string.IsNullOrWhiteSpace(pin)) throw new ArgumentNullException(nameof(pin),
-                ErrorMessageResource.NullDataProvidedError);
-            if(pin.Length != 14) throw new ArgumentException(string.Format(
-                ErrorMessageResource.InvalidStringLengthError, 14), nameof(pin));
-            var birthDateStr = pin.Substring(1, 8);
-            return GetDate(birthDateStr, PIN_BIRTHDATE_SECTION_FORMAT);
-        }
-
-        public static int CalcAgeFromPinForToday(string? pin) => CalcAgeForToday(ExtractBirthDate(pin));
-
-        public static int CalcAgeForToday(DateTime birthDate)
-        {
-            var today = DateTime.Today;
-            var age = today.Year - birthDate.Year;
-            if (birthDate.Date > today.AddYears(-age)) age--;
-            return age;
-        }
-
+        public const int ADULT_AGE_STARTS_FROM = 18;
+        public const int PIN_LENGTH = 14;
+        public const string PIN_BIRTHDATE_SECTION_FORMAT = "ddMMyyyy";
+        
         public static bool IsAnyNullOrEmpty<T>(T? myObject, out string[] foundNullPropNames, params string[]? onlySpecificProps)
         {
             if(myObject == null) throw new ArgumentException(
@@ -75,18 +58,5 @@ namespace api.Utils
             }
         }
 
-        public static DateTime GetDate(string dateStr, string format = "yyyy-MM-dd")
-        {
-            if (string.IsNullOrEmpty(dateStr))
-                throw new ArgumentNullException(nameof(dateStr),
-                    ErrorMessageResource.NullDataProvidedError);
-            if (DateTime.TryParseExact(dateStr, format, CultureInfo.InvariantCulture,
-                DateTimeStyles.None, out var date))
-                return date;
-            throw new FormatException($"Couldn't be parsed given {nameof(dateStr)}" +
-                $" to DateTime by format: {format}. Given src: {dateStr}");
-        }
-
-        public const int ADULT_AGE_STARTS_FROM = 18;
     }
 }
