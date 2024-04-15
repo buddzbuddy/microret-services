@@ -14,7 +14,7 @@ namespace api.Services.BL.Verifiers
                 throw new ArgumentException(string.Format(ErrorMessageResource.InvalidStringLengthError,
                     StaticReferences.PIN_LENGTH), nameof(pin));
             if (!pin.All(char.IsDigit))
-                throw new ArgumentException(ErrorMessageResource.StringShouldContainDigitsError,
+                throw new ArgumentException(ErrorMessageResource.StringShouldContainOnlyDigitsError,
                     nameof(pin));
         }
     }

@@ -10,7 +10,10 @@ namespace api.Utils
         public const int ADULT_AGE_STARTS_FROM = 18;
         public const int PIN_LENGTH = 14;
         public const string PIN_BIRTHDATE_SECTION_FORMAT = "ddMMyyyy";
-        
+        public const int MINIMUM_NAME_LENGTH = 2;
+        public const string MALE_ENDS_WITH = "УУЛУ";
+        public const string FEMALE_ENDS_WITH = "КЫЗЫ";
+
         public static bool IsAnyNullOrEmpty<T>(T? myObject, out string[] foundNullPropNames, params string[]? onlySpecificProps)
         {
             if(myObject == null) throw new ArgumentException(

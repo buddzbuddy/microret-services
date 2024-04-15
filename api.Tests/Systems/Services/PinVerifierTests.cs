@@ -60,7 +60,7 @@ namespace api.Tests.Systems.Services
             var ex = Assert.Throws<ArgumentException>(() => sut.VerifyPin(pin));
 
             ex.ParamName.Should().Be(nameof(pin));
-            ex.Message.Should().Contain(ErrorMessageResource.StringShouldContainDigitsError);
+            ex.Message.Should().Contain(ErrorMessageResource.StringShouldContainOnlyDigitsError);
         }
     }
 }

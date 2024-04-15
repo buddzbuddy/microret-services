@@ -148,5 +148,29 @@ namespace api.Tests.Systems.Services
             //Assert
             ex.ParamName.Should().Be("birthAct");
         }
+
+        [Fact]
+        public void WhenCalled_VerifyFamilyMembers_ThrowsFamilyMemberPropsNullError()
+        {
+            //Arrange
+            var pin = "123";
+            var familyMembers = new ubkInputJsonDTO.FamilyMemberDTO[]
+            { new() { pin = pin, lastname = "some", firstname = "some", patronymic = "some",
+                role = "some", roleId = 123, BirthActByPinInfo = new() } };
+
+            var dataHelperMock = new Mock<IDataHelper>();
+            dataHelperMock.Setup(s => s.CalcAgeFromPinForToday(pin)).Returns(17);
+            IPersonalIdentityVerifier sut =
+                new PersonalIdentityVerifierImpl(Mock.Of<IPassportDataVerifier>(),
+                Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>(), dataHelperMock.Object);
+
+            //Act
+            var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyFamilyMembers(familyMembers));
+
+            //Assert
+            ex.ParamName.Should().Be("ActDate,ActNumber,ActGovUnit,ChildSurname,ChildFirstName," +
+                "ChildGender,ChildPlaceOfBirth,MotherPin,MotherSurname,MotherFirstName," +
+                "MotherNationality,MotherCitizenship");
+        }
     }
 }

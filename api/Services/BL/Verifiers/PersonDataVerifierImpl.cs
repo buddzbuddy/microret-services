@@ -1,35 +1,42 @@
 ﻿using api.Contracts.BL.Verifiers;
+using api.Utils;
 using System.Linq;
 
 namespace api.Services.BL.Verifiers
 {
     public class PersonDataVerifierImpl : IPersonDataVerifier
     {
-        const int MINIMUM_NAME_LENGTH = 2;
-        const string MALE_ENDS_WITH = "УУЛУ";
-        const string FEMALE_ENDS_WITH = "КЫЗЫ";
+        
         public void VerifyNames(string? surname, string? name, string? patronymic)
         {
-            verifyLength(surname, nameof(surname));
-            verifyLength(name, nameof(name));
-            if (surname!.ToUpper().EndsWith(MALE_ENDS_WITH) ||
-                surname!.ToUpper().EndsWith(FEMALE_ENDS_WITH))
+            verifyName(surname, nameof(surname));
+            verifyName(name, nameof(name));
+            if (surname!.ToUpper().EndsWith(StaticReferences.MALE_ENDS_WITH) ||
+                surname!.ToUpper().EndsWith(StaticReferences.FEMALE_ENDS_WITH))
+            {
                 if (!string.IsNullOrEmpty(patronymic))
                     throw new ArgumentException(ErrorMessageResource.IllegalDataProvidedError,
                         nameof(patronymic));
+            }
+            else
+            {
+                verifyName(patronymic, nameof(patronymic));
+            }
         }
 
-        private void verifyLength(string? src, string nameOfField)
+        private void verifyName(string? src, string nameOfField)
         {
             if (string.IsNullOrEmpty(src))
-                throw new ArgumentNullException(nameOfField);
-            if (src.Length != MINIMUM_NAME_LENGTH)
+                throw new ArgumentNullException(nameOfField, ErrorMessageResource.NullDataProvidedError);
+            if (src.Length < StaticReferences.MINIMUM_NAME_LENGTH)
                 throw new ArgumentException(
                     string.Format(ErrorMessageResource.InvalidStringLengthError,
-                    MINIMUM_NAME_LENGTH), nameOfField);
-            if (!src.All(char.IsDigit))
+                    StaticReferences.MINIMUM_NAME_LENGTH), nameOfField);
+
+            //TODO: Modify for using regex to allow -. and space
+            if (src.Any(char.IsDigit))
                 throw new ArgumentException(
-                    ErrorMessageResource.StringShouldNotContainDigitsError,
+                    ErrorMessageResource.StringShouldContainOnlyLettersError,
                     nameOfField);
         }
     }

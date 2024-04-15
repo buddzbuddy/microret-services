@@ -159,10 +159,10 @@
   <data name="StringLengthError" xml:space="preserve">
     <value>The minimum length of '{0}' is {2} characters and maximum length is {1} characters.</value>
   </data>
-  <data name="StringShouldContainDigitsError" xml:space="preserve">
+  <data name="StringShouldContainOnlyDigitsError" xml:space="preserve">
     <value>The string should contain only digits</value>
   </data>
-  <data name="StringShouldNotContainDigitsError" xml:space="preserve">
-    <value>The string should not contain digits</value>
+  <data name="StringShouldContainOnlyLettersError" xml:space="preserve">
+    <value>The string should contain only letters</value>
   </data>
 </root>

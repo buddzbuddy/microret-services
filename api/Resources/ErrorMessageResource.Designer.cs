@@ -189,18 +189,18 @@ namespace api.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The string should contain only digits.
         /// </summary>
-        public static string StringShouldContainDigitsError {
+        public static string StringShouldContainOnlyDigitsError {
             get {
-                return ResourceManager.GetString("StringShouldContainDigitsError", resourceCulture);
+                return ResourceManager.GetString("StringShouldContainOnlyDigitsError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The string should not contain digits.
+        ///   Looks up a localized string similar to The string should contain only letters.
         /// </summary>
-        public static string StringShouldNotContainDigitsError {
+        public static string StringShouldContainOnlyLettersError {
             get {
-                return ResourceManager.GetString("StringShouldNotContainDigitsError", resourceCulture);
+                return ResourceManager.GetString("StringShouldContainOnlyLettersError", resourceCulture);
             }
         }
     }
