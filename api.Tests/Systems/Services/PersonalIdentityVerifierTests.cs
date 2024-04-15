@@ -150,7 +150,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void VerifyFamilyMembers_WhenCalled_ThrowsFamilyMemberPropsNullError()
+        public void VerifyFamilyMembers_WhenCalled_ThrowsBirthActPropsNullError()
         {
             //Arrange
             var pin = "123";

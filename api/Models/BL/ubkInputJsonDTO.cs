@@ -200,7 +200,6 @@ namespace api.Models.BL
         public string? Type { get; set; }
         public string? Gender { get; set; }
         public string? Age { get; set; }
-        public int? VFSDataID { get; set; }
     }
     public class CarDTO
     {

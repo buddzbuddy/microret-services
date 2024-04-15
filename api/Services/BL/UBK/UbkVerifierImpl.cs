@@ -48,7 +48,7 @@ namespace api.Services.BL.UBK
             _identityVerifier.VerifyFamilyMembers(parsedDataJson.FamilyMembers);
 
             //TODO: Verify all props
-            _propertyVerifier.VerifyParsedData(parsedDataJson.Applicant);
+            _propertyVerifier.VerifyProps(parsedDataJson.Applicant);
         }
 
         

@@ -15,7 +15,8 @@ namespace api.Utils
         public const string FEMALE_ENDS_WITH = "КЫЗЫ";
         public const int PASSPORT_DEFAULT_VALID_YEARS = 10;
 
-        public static bool IsAnyNullOrEmpty<T>(T? myObject, out string[] foundNullPropNames, params string[]? onlySpecificProps)
+        public static bool IsAnyNullOrEmpty<T>(T? myObject, out string[] foundNullPropNames,
+            string[]? onlySpecificProps, bool exclude = false)
         {
             if(myObject == null) throw new ArgumentException(
                 $"Provided object to check his properties null or empty is null himself." +
@@ -26,9 +27,14 @@ namespace api.Utils
                 $"Provided object has no any properties" +
                 $" to check null or empty. ObjectTypeName: {myObject.GetType().Name}");
             if (onlySpecificProps != null && onlySpecificProps.Length > 0)
-                propsForCheck = propsForCheck.Where(x => onlySpecificProps.Select(
-                    x => x.ToUpper())
+            {
+                if (exclude)
+                    propsForCheck = propsForCheck.Where(x => !onlySpecificProps.Select(x => x.ToUpper())
+                    .Contains(x.Name.ToUpper()));
+                else
+                    propsForCheck = propsForCheck.Where(x => onlySpecificProps.Select(x => x.ToUpper())
                 .Contains(x.Name.ToUpper()));
+            }
             if (!propsForCheck.Any()) throw new ArgumentException(
                 $"Provided object has no filtered properties[{string.Join(',',onlySpecificProps ?? Array.Empty<string>())}]" +
                 $" to check null or empty. ObjectTypeName: {myObject.GetType().Name}");
@@ -57,10 +63,26 @@ namespace api.Utils
                 }
                 else throw new InvalidOperationException(
                     $"Error made by conflict of result for" +
-                    $" {nameof(StaticReferences.IsAnyNullOrEmpty)}." +
+                    $" {nameof(IsAnyNullOrEmpty)}." +
                     $" Please contact the administrator");
             }
         }
-
+        
+        public static void CheckNullsWithExcludeProps<T>(T? myObject,
+            params string[]? excludeSpecificProps)
+        {
+            if (IsAnyNullOrEmpty(myObject, out string[] foundNullPropNames, excludeSpecificProps, true))
+            {
+                if (foundNullPropNames.Length > 0)
+                {
+                    throw new ArgumentNullException(string.Join(',', foundNullPropNames),
+                        ErrorMessageResource.NullDataProvidedError);
+                }
+                else throw new InvalidOperationException(
+                    $"Error made by conflict of result for" +
+                    $" {nameof(IsAnyNullOrEmpty)}." +
+                    $" Please contact the administrator");
+            }
+        }
     }
 }
