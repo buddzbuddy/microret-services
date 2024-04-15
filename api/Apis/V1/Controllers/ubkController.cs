@@ -1,4 +1,5 @@
 ﻿using api.Contracts.BL.UBK;
+using api.Models.BL;
 using System.Text.Json;
 
 namespace api.Apis.V1.Controllers
@@ -15,13 +16,11 @@ namespace api.Apis.V1.Controllers
         }
 
         /// <summary>
-        ///   This API creates and returns newly created ID of application
+        ///   Данная API принимает заявление на получение пособия Уй-булоого комок
         /// </summary>
         /// <response code="200">returns newly created ID</response>
         /// <response code="400">Error with description</response>
         [HttpPost("create-application")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<int> CreateApplication([FromBody]JsonElement data)
         {
             var result = await ubkService.CreateApplication(data.ToString());
