@@ -13,6 +13,7 @@ namespace api.Utils
         public const int MINIMUM_NAME_LENGTH = 2;
         public const string MALE_ENDS_WITH = "УУЛУ";
         public const string FEMALE_ENDS_WITH = "КЫЗЫ";
+        public const int PASSPORT_DEFAULT_VALID_YEARS = 10;
 
         public static bool IsAnyNullOrEmpty<T>(T? myObject, out string[] foundNullPropNames, params string[]? onlySpecificProps)
         {

@@ -2,6 +2,7 @@
 using api.Contracts.BL.UBK;
 using api.Models.BL;
 using System.Linq;
+using api.Utils;
 
 namespace api.Services.BL.Verifiers
 {
@@ -18,26 +19,23 @@ namespace api.Services.BL.Verifiers
                 throw new ArgumentNullException(nameof(passport),
                     ErrorMessageResource.NullDataProvidedError);
             _pinVerifier.VerifyPin(passport.Pin);
-            if(string.IsNullOrEmpty(passport.PassportSeries)) 
-                throw new ArgumentNullException(nameof(passport.PassportSeries),
-                    ErrorMessageResource.NullDataProvidedError);
+            StaticReferences.CheckNulls(passport, "PassportSeries", "PassportNumber",
+                "PassportAuthority", "IssuedDate");
             verifyPassportExpiration(passport);
         }
 
-        const int PASSPORT_DEFAULT_VALID_YEARS = 10;
+        
         private void verifyPassportExpiration(PassportOnlyDTO passport)
         {
-            if (passport.IssuedDate == null)
-                throw new ArgumentNullException(nameof(passport.IssuedDate),
-                    ErrorMessageResource.NullDataProvidedError);
             var today = DateTime.Today;
-            if (passport.IssuedDate.Value > today) throw new ArgumentException(
+            if (passport.IssuedDate! > today) throw new ArgumentException(
                 ErrorMessageResource.IllegalDataProvidedError,
                     nameof(passport.IssuedDate));
-            var validTill = passport.IssuedDate.Value.AddYears(PASSPORT_DEFAULT_VALID_YEARS);
+            var validTill =
+                passport.IssuedDate!.Value.AddYears(StaticReferences.PASSPORT_DEFAULT_VALID_YEARS);
             if (passport.ExpiredDate != null) validTill = passport.ExpiredDate.Value;
-            if (validTill > today) throw new InvalidOperationException(
-                ErrorMessageResource.PassportExpiredError);
+            if (validTill <= today) throw new ArgumentException(
+                ErrorMessageResource.PassportExpiredError, nameof(passport.IssuedDate));
         }
     }
 }

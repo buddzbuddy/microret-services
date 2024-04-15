@@ -24,7 +24,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifySrcJson_ThrowsEmptyError()
+        public void VerifySrcJson_WhenCalled_ThrowsEmptyError()
         {
             //Arrange
             var json = "";
@@ -38,7 +38,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifySrcJson_ThrowsInvalidJsonError()
+        public void VerifySrcJson_WhenCalled_ThrowsInvalidJsonError()
         {
             //Arrange
             var json = "asdadas";
@@ -52,7 +52,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyParsedJsonData_ThrowsObjectNullError()
+        public void VerifyParsedJsonData_WhenCalled_ThrowsObjectNullError()
         {
             //Arrange
             ubkInputJsonDTO? nullJson = null;

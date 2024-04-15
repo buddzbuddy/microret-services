@@ -23,7 +23,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_CalcAgeForToday_ThrowsNullError()
+        public void CalcAgeForToday_WhenCalled_ThrowsNullError()
         {
             //Arrange
             DateTime? birthDate = null;
@@ -38,7 +38,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_CalcAgeForToday_ThrowsIllegalError()
+        public void CalcAgeForToday_WhenCalled_ThrowsIllegalError()
         {
             //Arrange
             var birthDate = DateTime.Today.AddDays(1);
@@ -53,7 +53,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_CalcAgeForToday_ReturnsAge()
+        public void CalcAgeForToday_WhenCalled_ReturnsAge()
         {
             //Arrange
             var expectedAge = 12;
@@ -68,7 +68,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_GetDate_ThrowsNullError()
+        public void GetDate_WhenCalled_ThrowsNullError()
         {
             //Arrange
             var dateStr = "";
@@ -83,7 +83,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_GetDate_ThrowsFormatError()
+        public void GetDate_WhenCalled_ThrowsFormatError()
         {
             //Arrange
             var dateStr = "01012020";
@@ -94,7 +94,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_GetDate_ReturnsDate()
+        public void GetDate_WhenCalled_ReturnsDate()
         {
             //Arrange
             var dateStr = "01012020";
@@ -108,7 +108,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_ExtractBirthDate_ReturnsDate()
+        public void ExtractBirthDate_WhenCalled_ReturnsDate()
         {
             //Arrange
             var pin = "10101202012345";
@@ -122,7 +122,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_CalcAgeFromPinForToday_ReturnsAge()
+        public void CalcAgeFromPinForToday_WhenCalled_ReturnsAge()
         {
             //Arrange
             var expectedAge = 4;

@@ -20,7 +20,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyNames_ThrowsLastNameNullError()
+        public void VerifyNames_WhenCalled_ThrowsLastNameNullError()
         {
             //Arrange
             string? surname = null;
@@ -37,7 +37,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyNames_ThrowsLastNameMinimumLengthError()
+        public void VerifyNames_WhenCalled_ThrowsLastNameMinimumLengthError()
         {
             //Arrange
             string expectedErrorMsg = string.Format(ErrorMessageResource.InvalidStringLengthError,
@@ -56,7 +56,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyNames_ThrowsLastNameLettersOnlyError()
+        public void VerifyNames_WhenCalled_ThrowsLastNameLettersOnlyError()
         {
             //Arrange
             string? surname = "some 2";
@@ -73,7 +73,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyNames_ThrowsFirstNameNullError()
+        public void VerifyNames_WhenCalled_ThrowsFirstNameNullError()
         {
             //Arrange
             string? surname = "some";
@@ -90,7 +90,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyNames_ThrowsFirstNameMinimumLengthError()
+        public void VerifyNames_WhenCalled_ThrowsFirstNameMinimumLengthError()
         {
             //Arrange
             string expectedErrorMsg = string.Format(ErrorMessageResource.InvalidStringLengthError,
@@ -109,7 +109,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyNames_ThrowsFirstNameLettersOnlyError()
+        public void VerifyNames_WhenCalled_ThrowsFirstNameLettersOnlyError()
         {
             //Arrange
             string? surname = "some";
@@ -126,7 +126,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyNames_ThrowsPatronymicIllegalError()
+        public void VerifyNames_WhenCalled_ThrowsPatronymicIllegalError()
         {
             //Arrange
             string? surname = "some " + StaticReferences.MALE_ENDS_WITH;
@@ -143,7 +143,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyNames_ThrowsPatronymicNullError()
+        public void VerifyNames_WhenCalled_ThrowsPatronymicNullError()
         {
             //Arrange
             string? surname = "some";
@@ -160,7 +160,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyNames_ThrowsPatronymicMinLengthError()
+        public void VerifyNames_WhenCalled_ThrowsPatronymicMinLengthError()
         {
             //Arrange
             string expectedErrorMsg = string.Format(ErrorMessageResource.InvalidStringLengthError,
@@ -179,7 +179,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyNames_ThrowsPatronymicOnlyLettersError()
+        public void VerifyNames_WhenCalled_ThrowsPatronymicOnlyLettersError()
         {
             //Arrange
             string expectedErrorMsg = string.Format(ErrorMessageResource.InvalidStringLengthError,

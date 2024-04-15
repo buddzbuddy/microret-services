@@ -20,7 +20,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyPin_ThrowsNullError()
+        public void VerifyPin_WhenCalled_ThrowsNullError()
         {
             //Arrange
             string? pin = null;
@@ -34,7 +34,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyPin_ThrowsPinLengthError()
+        public void VerifyPin_WhenCalled_ThrowsPinLengthError()
         {
             //Arrange
             string? pin = "1234567891012";
@@ -50,7 +50,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyPin_ThrowsPinInvalidError()
+        public void VerifyPin_WhenCalled_ThrowsPinInvalidError()
         {
             //Arrange
             string? pin = "1234567891012 ";

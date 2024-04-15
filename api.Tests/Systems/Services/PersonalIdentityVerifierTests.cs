@@ -23,7 +23,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyApplicant_ThrowsApplicantNullError()
+        public void VerifyApplicant_WhenCalled_ThrowsApplicantNullError()
         {
             //Arrange
             ubkInputJsonDTO.ApplicantDTO? applicant = null;
@@ -39,7 +39,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyApplicant_ThrowsFactAddressNullError()
+        public void VerifyApplicant_WhenCalled_ThrowsFactAddressNullError()
         {
             //Arrange
             ubkInputJsonDTO.ApplicantDTO applicant = new() { };
@@ -55,7 +55,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyApplicant_ThrowsFactAddressRegionNullError()
+        public void VerifyApplicant_WhenCalled_ThrowsFactAddressRegionNullError()
         {
             //Arrange
             ubkInputJsonDTO.ApplicantDTO applicant = new() { ResidentialAddress =
@@ -74,7 +74,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyFamilyMembers_ThrowsFamilyMembersNullError()
+        public void VerifyFamilyMembers_WhenCalled_ThrowsFamilyMembersNullError()
         {
             //Arrange
             ubkInputJsonDTO.FamilyMemberDTO[]? familyMembers = null;
@@ -90,7 +90,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyFamilyMembers_ThrowsFamilyMemberRoleNullError()
+        public void VerifyFamilyMembers_WhenCalled_ThrowsFamilyMemberRoleNullError()
         {
             //Arrange
             var familyMembers = new ubkInputJsonDTO.FamilyMemberDTO[]
@@ -109,7 +109,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyFamilyMembers_ThrowsFamilyMemberRoleIdNullError()
+        public void VerifyFamilyMembers_WhenCalled_ThrowsFamilyMemberRoleIdNullError()
         {
             //Arrange
             var familyMembers = new ubkInputJsonDTO.FamilyMemberDTO[]
@@ -128,7 +128,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyFamilyMembers_ThrowsFamilyMemberBirthActNullError()
+        public void VerifyFamilyMembers_WhenCalled_ThrowsFamilyMemberBirthActNullError()
         {
             //Arrange
             var pin = "123";
@@ -150,7 +150,7 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void WhenCalled_VerifyFamilyMembers_ThrowsFamilyMemberPropsNullError()
+        public void VerifyFamilyMembers_WhenCalled_ThrowsFamilyMemberPropsNullError()
         {
             //Arrange
             var pin = "123";
