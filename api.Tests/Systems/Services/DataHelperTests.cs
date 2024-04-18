@@ -1,5 +1,6 @@
 ﻿using api.Contracts.BL.Verifiers;
 using api.Contracts.Helpers;
+using api.Models.Enums;
 using api.Resources;
 using api.Services.BL.Verifiers;
 using api.Services.Helpers;
@@ -133,6 +134,20 @@ namespace api.Tests.Systems.Services
             var result = sut.CalcAgeFromPinForToday(pin);
             //Assert
             result.Should().Be(expectedAge);
+        }
+
+        [Fact]
+        public void GetGender_WhenCalled_ReturnsMale()
+        {
+            //Arrange
+            var expectedGender = GenderType.MALE;
+            var pin = "20101202012345";
+            IDataHelper sut = new DataHelperImpl(new PinVerifierImpl());
+
+            //Act
+            var result = sut.GetGender(pin);
+            //Assert
+            result.Should().Be(expectedGender);
         }
     }
 }

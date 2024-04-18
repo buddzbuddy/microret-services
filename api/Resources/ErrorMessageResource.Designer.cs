@@ -203,5 +203,14 @@ namespace api.Resources {
                 return ResourceManager.GetString("StringShouldContainOnlyLettersError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unemployee status incorrect.
+        /// </summary>
+        public static string UnemployeeStatusIncorrectError {
+            get {
+                return ResourceManager.GetString("UnemployeeStatusIncorrectError", resourceCulture);
+            }
+        }
     }
 }

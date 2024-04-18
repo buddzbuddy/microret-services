@@ -62,5 +62,16 @@ namespace api.Tests.Systems.Services
             ex.ParamName.Should().Be(nameof(pin));
             ex.Message.Should().Contain(ErrorMessageResource.StringShouldContainOnlyDigitsError);
         }
+
+        [Fact]
+        public void VerifyPin_WhenCalled_ReturnsOK()
+        {
+            //Arrange
+            string? pin = "10101202000000";
+            IPinVerifier sut = new PinVerifierImpl();
+
+            //Act & Assert
+            sut.VerifyPin(pin);
+        }
     }
 }

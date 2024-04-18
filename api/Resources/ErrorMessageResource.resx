@@ -165,4 +165,7 @@
   <data name="StringShouldContainOnlyLettersError" xml:space="preserve">
     <value>The string should contain only letters</value>
   </data>
+  <data name="UnemployeeStatusIncorrectError" xml:space="preserve">
+    <value>Unemployee status incorrect</value>
+  </data>
 </root>

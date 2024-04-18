@@ -14,6 +14,9 @@ namespace api.Utils
         public const string MALE_ENDS_WITH = "УУЛУ";
         public const string FEMALE_ENDS_WITH = "КЫЗЫ";
         public const int PASSPORT_DEFAULT_VALID_YEARS = 10;
+        public const int MEN_RETIREMENT_AGE = 63;
+        public const int WOMEN_RETIREMENT_AGE = 58;
+        public const string UNEMPLOYEE_STATUS_NAME = "Официальный безработный";
 
         public static bool IsAnyNullOrEmpty<T>(T? myObject, out string[] foundNullPropNames,
             string[]? onlySpecificProps, bool exclude = false)
