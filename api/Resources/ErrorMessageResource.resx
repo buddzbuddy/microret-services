@@ -141,6 +141,9 @@
   <data name="MaxLengthError" xml:space="preserve">
     <value>Maximum length of {0} is '{1}' characters.</value>
   </data>
+  <data name="NotEligibleWithReasonError" xml:space="preserve">
+    <value>You are not eligible to get this payment by the reason: {0}</value>
+  </data>
   <data name="NullDataProvidedError" xml:space="preserve">
     <value>Provided null data</value>
   </data>
@@ -164,5 +167,11 @@
   </data>
   <data name="StringShouldContainOnlyLettersError" xml:space="preserve">
     <value>The string should contain only letters</value>
+  </data>
+  <data name="UnemployeeStatusIncorrectError" xml:space="preserve">
+    <value>Unemployee status incorrect</value>
+  </data>
+  <data name="YouHaveInsuranceError" xml:space="preserve">
+    <value>You have insurance from employer</value>
   </data>
 </root>

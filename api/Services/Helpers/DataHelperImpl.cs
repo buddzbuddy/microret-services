@@ -1,5 +1,6 @@
 ﻿using api.Contracts.BL.Verifiers;
 using api.Contracts.Helpers;
+using api.Models.Enums;
 using api.Utils;
 using System.Globalization;
 
@@ -43,6 +44,12 @@ namespace api.Services.Helpers
                 return date;
             throw new FormatException($"Couldn't be parsed given {nameof(dateStr)}" +
                 $" to DateTime by format: {format}. Given src: {dateStr}");
+        }
+
+        public GenderType GetGender(string? pin)
+        {
+            _pinVerifier.VerifyPin(pin);
+            return (GenderType)int.Parse(pin![0].ToString());
         }
     }
 }
