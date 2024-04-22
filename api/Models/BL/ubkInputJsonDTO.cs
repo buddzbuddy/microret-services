@@ -237,6 +237,7 @@ namespace api.Models.BL
             /// </summary>
             public string? DateBegin { get;set; }
             public string? DateEnd { get; set; }
+            public double? Sum { get; set; }
         }
     }
 }
