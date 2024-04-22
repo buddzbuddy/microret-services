@@ -32,7 +32,7 @@ namespace api.Tests.Systems.Services
             //Arrange
             ubkInputJsonDTO.PersonDetailsInfo? person = null;
             IValidateExcludingInputs sut = new ValidateExcludingInputsImpl(Mock.Of<IDataHelper>(),
-                Mock.Of<IUnemployeeValidator>());
+                Mock.Of<IUnemployeeValidator>(), Mock.Of<ISFService>());
 
             //Act & Assert
             var ex = Assert.Throws<ArgumentNullException>(() => sut.Validate(person));
@@ -50,7 +50,7 @@ namespace api.Tests.Systems.Services
             dataHelperMock.Setup(s =>
             s.GetGender(It.IsAny<string>())).Returns(GenderType.MALE);
             IValidateExcludingInputs sut = new ValidateExcludingInputsImpl(dataHelperMock.Object,
-                Mock.Of<IUnemployeeValidator>());
+                Mock.Of<IUnemployeeValidator>(), Mock.Of<ISFService>());
 
             //Act & Assert
             var ex = Assert.Throws<ArgumentNullException>(() => sut.Validate(person));
@@ -73,7 +73,7 @@ namespace api.Tests.Systems.Services
                 .Returns(false);
 
             IValidateExcludingInputs sut = new ValidateExcludingInputsImpl(dataHelperMock.Object,
-                unemployeeValidatorMock.Object);
+                unemployeeValidatorMock.Object, Mock.Of<ISFService>());
 
             //Act & Assert
             var ex = Assert.Throws<ArgumentException>(() => sut.Validate(person));
@@ -98,7 +98,7 @@ namespace api.Tests.Systems.Services
             unemployeeValidatorMock.Setup(s => s.IsUnemployee(person.UnemployedStatusInfo))
                 .Returns(true);
             IValidateExcludingInputs sut = new ValidateExcludingInputsImpl(dataHelperMock.Object,
-                unemployeeValidatorMock.Object);
+                unemployeeValidatorMock.Object, Mock.Of<ISFService>());
 
             //Act & Assert
             sut.Validate(person);

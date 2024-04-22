@@ -31,6 +31,7 @@ namespace api.Models.BL
             public PassportDataInfoDTO? PassportDataInfo { get; set; }
             public MarriageActInfoDTO? MarriageActInfo { get; set; }
             public ResidentialAddressDTO? ResidentialAddress { get; set; }
+            public WorkPeriodInfoDTO? WorkPeriodInfo { get; set; }
             public UnemployedStatusInfoDTO? UnemployedStatusInfo { get; set; }
             public PensionInfoDTO? PensionInfo { get; set; }
             public MSECDetailsInfoDTO? MSECDetailsInfo { get; set; }
@@ -215,5 +216,28 @@ namespace api.Models.BL
         public string? Vin { get; set; }
         public int? EngineVolume { get; set; }
         public string? DateFrom { get; set; }
+    }
+    public class WorkPeriodInfoDTO
+    {
+        public string? State { get; set; }
+        public string? PIN { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? Patronymic { get; set; }
+        public string? Issuer { get; set; }
+        public Item[]? WorkPeriods { get; set; }
+        public class Item
+        {
+            public string? PIN_LSS { get; set; }
+            public string? Payer { get; set; }
+            public string? INN { get; set;}
+            public long? NumSF { get; set;}
+            /// <summary>
+            /// Use FORMAT
+            /// </summary>
+            public string? DateBegin { get;set; }
+            public string? DateEnd { get; set; }
+            public double? Sum { get; set; }
+        }
     }
 }

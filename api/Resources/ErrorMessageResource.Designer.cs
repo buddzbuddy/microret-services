@@ -133,6 +133,15 @@ namespace api.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are not eligible to get this payment by the reason: {0}.
+        /// </summary>
+        public static string NotEligibleWithReasonError {
+            get {
+                return ResourceManager.GetString("NotEligibleWithReasonError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provided null data.
         /// </summary>
         public static string NullDataProvidedError {
@@ -210,6 +219,15 @@ namespace api.Resources {
         public static string UnemployeeStatusIncorrectError {
             get {
                 return ResourceManager.GetString("UnemployeeStatusIncorrectError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have insurance from employer.
+        /// </summary>
+        public static string YouHaveInsuranceError {
+            get {
+                return ResourceManager.GetString("YouHaveInsuranceError", resourceCulture);
             }
         }
     }

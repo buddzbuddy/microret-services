@@ -10,6 +10,7 @@ namespace api.Utils
         public const int ADULT_AGE_STARTS_FROM = 18;
         public const int PIN_LENGTH = 14;
         public const string PIN_BIRTHDATE_SECTION_FORMAT = "ddMMyyyy";
+        public const string WORK_PERIOD_DATE_FORMAT = "dd.MM.yyyy";
         public const int MINIMUM_NAME_LENGTH = 2;
         public const string MALE_ENDS_WITH = "УУЛУ";
         public const string FEMALE_ENDS_WITH = "КЫЗЫ";
@@ -17,6 +18,7 @@ namespace api.Utils
         public const int MEN_RETIREMENT_AGE = 63;
         public const int WOMEN_RETIREMENT_AGE = 58;
         public const string UNEMPLOYEE_STATUS_NAME = "Официальный безработный";
+        public const int MINIMUM_NOT_ACTIVE_WORK_PERIOD_IN_MONTHS = 3;
 
         public static bool IsAnyNullOrEmpty<T>(T? myObject, out string[] foundNullPropNames,
             string[]? onlySpecificProps, bool exclude = false)
