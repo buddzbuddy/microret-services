@@ -44,6 +44,9 @@ namespace api.Services.BL.UBK
         {
             if (parsedDataJson == null)
                 throw new DomainException(ErrorMessageResource.JsonObjectNullError);
+            if (parsedDataJson.ID == null)
+                throw new ArgumentNullException(nameof(parsedDataJson.ID),
+                    ErrorMessageResource.NullDataProvidedError);
             _identityVerifier.VerifyApplicant(parsedDataJson.Applicant);
             _identityVerifier.VerifyFamilyMembers(parsedDataJson.FamilyMembers);
 

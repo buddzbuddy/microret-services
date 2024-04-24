@@ -64,5 +64,31 @@ namespace api.Tests.Systems.Services
             //Assert
             ex.Message.Should().Be(ErrorMessageResource.JsonObjectNullError);
         }
+
+        [Fact]
+        public void VerifyParsedJsonData_WhenCalled_ThrowsIDNullError()
+        {
+            //Arrange
+            ubkInputJsonDTO? nullJson = new();
+            IUbkVerifier sut = new UbkVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
+
+            //Act
+            var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyParsedJsonData(nullJson));
+
+            //Assert
+            ex.ParamName.Should().Be(nameof(nullJson.ID));
+            ex.Message.Should().StartWith(ErrorMessageResource.NullDataProvidedError);
+        }
+
+        [Fact]
+        public void VerifyParsedJsonData_WhenCalled_ReturnsOK()
+        {
+            //Arrange
+            ubkInputJsonDTO? nullJson = new() { ID = 123 };
+            IUbkVerifier sut = new UbkVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
+
+            //Act
+            sut.VerifyParsedJsonData(nullJson);
+        }
     }
 }
