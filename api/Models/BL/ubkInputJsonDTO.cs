@@ -5,6 +5,7 @@ namespace api.Models.BL
 {
     public class ubkInputJsonDTO
     {
+        public int ID { get; set; }
         public ApplicantDTO? Applicant { get; set; }
         public FamilyMemberDTO[]? FamilyMembers { get; set; }
 
