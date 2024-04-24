@@ -14,7 +14,7 @@ namespace api.Services.BL.UBK
             _dataHelper = dataHelper;
         }
 
-        public void VerifyProps(ubkInputJsonDTO.PersonDetailsInfo? personDetails)
+        public void VerifyProps(PersonDetailsInfo? personDetails)
         {
             if(personDetails == null) throw new ArgumentNullException(nameof(personDetails),
                 ErrorMessageResource.NullDataProvidedError);

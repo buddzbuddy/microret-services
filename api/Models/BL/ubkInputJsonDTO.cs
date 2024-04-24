@@ -10,7 +10,6 @@ namespace api.Models.BL
 
         public class ApplicantDTO : PersonDetailsInfo
         {
-            
         }
 
         public class FamilyMemberDTO : PersonDetailsInfo
@@ -25,22 +24,22 @@ namespace api.Models.BL
             public BirthActByPinInfoDTO? BirthActByPinInfo { get; set; }
         }
 
-        public abstract class PersonDetailsInfo
-        {
-            public string? pin { get; set; }
-            public PassportDataInfoDTO? PassportDataInfo { get; set; }
-            public MarriageActInfoDTO? MarriageActInfo { get; set; }
-            public ResidentialAddressDTO? ResidentialAddress { get; set; }
-            public WorkPeriodInfoDTO? WorkPeriodInfo { get; set; }
-            public UnemployedStatusInfoDTO? UnemployedStatusInfo { get; set; }
-            public PensionInfoDTO? PensionInfo { get; set; }
-            public MSECDetailsInfoDTO? MSECDetailsInfo { get; set; }
-            public RealEstateInfoDTO[]? RealEstateInfoList { get; set; }
-            public AnimalDataDTO[]? AnimalDataList { get; set; }
-            public CarDTO[]? Cars { get; set; }
-        }
     }
-    
+    public abstract class PersonDetailsInfo
+    {
+        public string? pin { get; set; }
+        public PassportDataInfoDTO? PassportDataInfo { get; set; }
+        public MarriageActInfoDTO? MarriageActInfo { get; set; }
+        public ResidentialAddressDTO? ResidentialAddress { get; set; }
+        public WorkPeriodInfoDTO? WorkPeriodInfo { get; set; }
+        public UnemployedStatusInfoDTO? UnemployedStatusInfo { get; set; }
+        public PensionInfoDTO? PensionInfo { get; set; }
+        public MSECDetailsInfoDTO? MSECDetailsInfo { get; set; }
+        public RealEstateInfoDTO[]? RealEstateInfoList { get; set; }
+        public AnimalDataDTO[]? AnimalDataList { get; set; }
+        public CarDTO[]? Cars { get; set; }
+    }
+
 
     public class PassportDataInfoDTO : PassportOnlyDTO
     {
@@ -68,7 +67,6 @@ namespace api.Models.BL
         public int? SubareaId { get; set; }
         public int? StreetId { get; set; }
         public int? HouseId { get; set; }
-        public int? PassportServiceDataID { get; set; }
         public string? ApplicantType { get; set; }
         public string? PhoneNumber { get; set; }
     }

@@ -19,7 +19,7 @@ namespace api.Services.BL
         public async Task<double> GetGMI(gmiRequestDTO requestDTO)
         {
             var connectionString = _configuration.GetConnectionString("cissaDb");
-            _logger.LogInformation("connectionString: {0}", connectionString);
+            //_logger.LogInformation("connectionString: {0}", connectionString);
             using var conn = new SqlConnection(connectionString);
             using var cmd = conn.CreateCommand();
             cmd.CommandTimeout = 10;

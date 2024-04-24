@@ -21,10 +21,10 @@ namespace api.Apis.V1.Controllers
         /// <response code="200">returns newly created ID</response>
         /// <response code="400">Error with description</response>
         [HttpPost("create-application")]
-        public async Task<int> CreateApplication([FromBody]JsonElement data)
+        public async Task<createApplicationResultDTO> CreateApplication([FromBody]JsonElement data)
         {
             var result = await ubkService.CreateApplication(data.ToString());
-            return result;
+            return new createApplicationResultDTO { regNo = result.regNo, appId = result.appId };
         }
 
         [HttpGet("get-hello")]

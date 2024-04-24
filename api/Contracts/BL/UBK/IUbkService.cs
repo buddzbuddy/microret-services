@@ -2,6 +2,6 @@
 {
     public interface IUbkService
     {
-        Task<int> CreateApplication(string json);
+        Task<(string regNo, Guid appId)> CreateApplication(string json);
     }
 }

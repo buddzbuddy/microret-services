@@ -3,6 +3,7 @@ using api.Contracts.BL.UBK;
 using api.Models.BL;
 using System.Linq;
 using api.Utils;
+using System.Text.RegularExpressions;
 
 namespace api.Services.BL.Verifiers
 {
@@ -21,6 +22,16 @@ namespace api.Services.BL.Verifiers
             _pinVerifier.VerifyPin(passport.Pin);
             StaticReferences.CheckNulls(passport, "PassportSeries", "PassportNumber",
                 "PassportAuthority", "IssuedDate");
+
+            //TODO: replace pattern to valid one
+            /*var certNo = "";
+            string pattern = @"^[a-zA-Z0-9]+\z";//checks letters and numbers ^[a-zA-Z0-9 ]+\z
+            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(pattern);
+
+            // Compare a string against the regular expression
+            var validCertNo = System.Text.RegularExpressions.Regex.Replace(certNo, pattern, "");*/
+
+
             verifyPassportExpiration(passport);
         }
 

@@ -25,7 +25,7 @@ namespace api.Tests.Systems.Services
         public void VerifyProps_WhenCalled_ThrowsNullError()
         {
             //Arrange
-            ubkInputJsonDTO.PersonDetailsInfo? personDetails = null;
+            PersonDetailsInfo? personDetails = null;
             IPropertyVerifier sut = new PropertyVerifierImpl(Mock.Of<IDataHelper>());
 
             //Act & Assert

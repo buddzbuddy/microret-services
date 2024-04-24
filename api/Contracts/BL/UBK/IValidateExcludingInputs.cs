@@ -1,4 +1,4 @@
-﻿using static api.Models.BL.ubkInputJsonDTO;
+﻿using api.Models.BL;
 
 namespace api.Contracts.BL.UBK
 {

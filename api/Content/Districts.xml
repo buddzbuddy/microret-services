@@ -1,0 +1,713 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <item>
+    <userid>{79BF76FC-9A29-4A04-B351-C661F2C80FBC}</userid>
+    <orgid>{AAD91EAB-297F-40C8-B592-68573495EEC0}</orgid>
+    <id>5013</id>
+    <nameRu>Жети-Огузский р-н</nameRu>
+    <nameEn>Жети-Огузский Район</nameEn>
+    <nameKg>Жети-Өгүз</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{17ABE827-4B27-4E3D-B2AC-BCD0050DA37D}</userid>
+    <orgid>{D2EDB83E-7EE5-4B5A-82A6-E9E49DD1E3B3}</orgid>
+    <id>4951</id>
+    <nameRu>Ак-Суйский р-н</nameRu>
+    <nameEn>Ак-Суу Району</nameEn>
+    <nameKg>Ак-Суу</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{F91A82C8-CEB0-4994-8ADF-8E2871594539}</userid>
+    <orgid>{416366EE-580B-4E57-8641-0D90A2F5AB73}</orgid>
+    <id>5076</id>
+    <nameRu>Иссык-Кульский р-н</nameRu>
+    <nameEn>Иссык-Кульский Район</nameEn>
+    <nameKg>Ысык-Көл</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{9EE535C0-44CB-452F-A952-28104D9247AC}</userid>
+    <orgid>{43842F64-7BB7-45EC-930B-54AD19186382}</orgid>
+    <id>5213</id>
+    <nameRu>г. Каракол</nameRu>
+    <nameEn>Каракол</nameEn>
+    <nameKg>Каракол</nameKg>
+    <ikaoA3/>
+    <type>6</type>
+    <typeKg>Областтык маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+  <item>
+    <userid>{743E1526-61C1-4B67-8F5E-29D8AB305594}</userid>
+    <orgid>{2FEA2DF5-24F6-4E53-BF6C-22604AC014C1}</orgid>
+    <id>5216</id>
+    <nameRu>г. Балыкчы</nameRu>
+    <nameEn>Балыкчы</nameEn>
+    <nameKg>Балыкчы</nameKg>
+    <ikaoA3/>
+    <type>6</type>
+    <typeKg>Областтык маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+  <item>
+    <userid>{CE605B6D-F54D-477E-84E3-98701E838336}</userid>
+    <orgid>{55F9FFBF-B789-4002-BD64-B04163806897}</orgid>
+    <id>5122</id>
+    <nameRu>Тонский р-н</nameRu>
+    <nameEn>Тонский Район</nameEn>
+    <nameKg>Тоң</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{5F7A2E4B-1056-48D0-A2D5-A932D43CEB7A}</userid>
+    <orgid>{5B438995-2070-46A8-9377-E922F0D64E4F}</orgid>
+    <id>5161</id>
+    <nameRu>Тюпский р-н</nameRu>
+    <nameEn>Тюпский Район</nameEn>
+    <nameKg>Түп</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{822DADAF-6D16-4BE5-BBD7-DF13CC048AE0}</userid>
+    <orgid>{A5B70AEE-4E8B-4194-864D-F58E5BAB76E7}</orgid>
+    <id>5347</id>
+    <nameRu>Аксыйский р-н</nameRu>
+    <nameEn>Аксыйский Район</nameEn>
+    <nameKg>Аксы</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{B7623A70-FC0C-45DF-9420-3C0D385051F8}</userid>
+    <orgid>{A3E2A017-96F2-47C6-AF09-6FA4287E6953}</orgid>
+    <id>5432</id>
+    <nameRu>Ноокенский р-н</nameRu>
+    <nameEn>Ноокенский Район</nameEn>
+    <nameKg>Ноокен</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{DC5BF5BE-B42A-4DB0-A568-100D649979E3}</userid>
+    <orgid>{9375DF49-1B41-4EFD-BB79-0FC2A86ABED6}</orgid>
+    <id>5498</id>
+    <nameRu>Сузакский р-н</nameRu>
+    <nameEn>Сузакский Район</nameEn>
+    <nameKg>Сузак</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{21630C1C-34FE-4C7E-8FF2-B349DB00DDA2}</userid>
+    <orgid>{F9D53DFB-0E18-44E6-A905-8B67F5751D37}</orgid>
+    <id>5660</id>
+    <nameRu>Токтогульский р-н</nameRu>
+    <nameEn>Токтогульский Район</nameEn>
+    <nameKg>Токтогул</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{48A132E3-872E-4FA4-875B-D918B1768717}</userid>
+    <orgid>{BF0A92AD-140E-4582-AB9F-DB304890C35A}</orgid>
+    <id>5639</id>
+    <nameRu>Тогуз-Тороуский р-н</nameRu>
+    <nameEn>Тогуз-Тороуский Район</nameEn>
+    <nameKg>Тогуз-Торо</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{321746F7-85B8-4498-B8C9-1AB449DA5C8A}</userid>
+    <orgid>{5026031D-2BC9-4A24-8DB5-30C7DD992352}</orgid>
+    <id>5719</id>
+    <nameRu>Чаткальский р-н</nameRu>
+    <nameEn>Чаткальский Район</nameEn>
+    <nameKg>Чаткал</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{EA1DB822-BD61-4AA2-9A6A-137B640D9749}</userid>
+    <orgid>{8E3CA117-0956-4F67-A8EF-B8222DC0A21E}</orgid>
+    <id>5742</id>
+    <nameRu>г. Таш-Кумыр</nameRu>
+    <nameEn>Таш-Кумыр</nameEn>
+    <nameKg>Таш-Көмүр</nameKg>
+    <ikaoA3/>
+    <type>6</type>
+    <typeKg>Областтык маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+  <item>
+    <userid>{37137306-1E8A-4DA8-841B-EEF35A8A4A89}</userid>
+    <orgid>{CB86E66E-8A41-4D92-9FD6-9BCF7E61F543}</orgid>
+    <id>5759</id>
+    <nameRu>г. Кара-Куль</nameRu>
+    <nameEn>Кара-Куль</nameEn>
+    <nameKg>Кара-Көл</nameKg>
+    <ikaoA3/>
+    <type>6</type>
+    <typeKg>Областтык маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+  <item>
+    <userid>{B9D08CE0-1063-49FE-8F93-E89CA924DABE}</userid>
+    <orgid>{EFA2A70A-D10E-4941-B1F8-AE5218E5AD29}</orgid>
+    <id>5752</id>
+    <nameRu>г. Майлуу-Суу</nameRu>
+    <nameEn>Майлуу-Суу</nameEn>
+    <nameKg>Майлуу-Суу</nameKg>
+    <ikaoA3/>
+    <type>6</type>
+    <typeKg>Областтык маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+  <item>
+    <userid>{5FA90740-B224-4255-A2BE-8D38FAEB28EE}</userid>
+    <orgid>{915D0BEB-53C1-440F-9CBA-00612369FEFC}</orgid>
+    <id>5221</id>
+    <nameRu>Ала-Букинский р-н</nameRu>
+    <nameEn>Ала-Букинский Район</nameEn>
+    <nameKg>Ала-Бука</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{04007AC8-3FEA-479B-BF02-C6314507A9EE}</userid>
+    <orgid>{A23770C6-2843-446E-8382-8C50AFD699E5}</orgid>
+    <id>5272</id>
+    <nameRu>Базар-Коргонский р-н</nameRu>
+    <nameEn>Базар-Коргонский Район</nameEn>
+    <nameKg>Базар-Коргон</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{23319D97-709B-435A-B4BC-83843F26967E}</userid>
+    <orgid>{D319DC07-E7F7-4997-AFCD-17CEAD707B7F}</orgid>
+    <id>5734</id>
+    <nameRu>г. Джалал-Абад</nameRu>
+    <nameEn>Джалал-Абад</nameEn>
+    <nameKg>Жалал-Абад</nameKg>
+    <ikaoA3/>
+    <type>6</type>
+    <typeKg>Областтык маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+  <item>
+    <userid>{944526AB-4F0F-4373-BE1C-3C7BFD3DDB05}</userid>
+    <orgid>{8CAC9C70-D770-4AAB-8B0B-E1C432F6985A}</orgid>
+    <id>1297</id>
+    <nameRu>г. Кок-Жангак (+ Кельме)</nameRu>
+    <nameEn></nameEn>
+    <nameKg>Кок-Жангак (+ Кельме)</nameKg>
+    <ikaoA3/>
+    <type>7</type>
+    <typeKg>Райондук маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+
+  <item>
+    <userid>{9C10D35C-E935-4A4E-BE73-D6449679262C}</userid>
+    <orgid>{CB788BA9-8F94-4317-A655-B4F5527F3A4B}</orgid>
+    <id>5766</id>
+    <nameRu>Ак-Талинский р-н</nameRu>
+    <nameEn>Ак-Талинский Район</nameEn>
+    <nameKg>Ак-Талаа</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{30F2FEB8-0A37-4A0A-BC8C-828AA9A187FB}</userid>
+    <orgid>{B631F3B0-1656-49C5-9152-0252F304D29B}</orgid>
+    <id>5871</id>
+    <nameRu>Кочкорский р-н</nameRu>
+    <nameEn>Кочкорский Район</nameEn>
+    <nameKg>Кочкор</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{B14A2E2C-479C-4F5F-818A-1BD6D83DA399}</userid>
+    <orgid>{A6B9B397-81CF-43ED-A17B-6A13C110A678}</orgid>
+    <id>5915</id>
+    <nameRu>Нарынский р-н</nameRu>
+    <nameEn>Нарынский Район</nameEn>
+    <nameKg>Нарын</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{38961AA0-6C89-41AD-BC5C-733AFD94F792}</userid>
+    <orgid>{4C60A2A2-73B4-4EA4-A6D0-E2B41370C7FC}</orgid>
+    <id>5799</id>
+    <nameRu>Ат-Башынский р-н</nameRu>
+    <nameEn>Ат-Башынский Район</nameEn>
+    <nameKg>Ат-Башы</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{5A9CADEA-D293-417F-BD82-8DA9F9A50190}</userid>
+    <orgid>{52568E10-0210-4B09-B106-9E14520E26F1}</orgid>
+    <id>5831</id>
+    <nameRu>Жумгальский р-н</nameRu>
+    <nameEn>Жумгальский Район</nameEn>
+    <nameKg>Жумгал</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{8B8D58B3-56EC-45C6-9B19-78495DCAA68A}</userid>
+    <orgid>{0A409F28-4A73-4CED-B368-10C6BE53419F}</orgid>
+    <id>5970</id>
+    <nameRu>г. Нарын</nameRu>
+    <nameEn>Нарын</nameEn>
+    <nameKg>Нарын</nameKg>
+    <ikaoA3/>
+    <type>6</type>
+    <typeKg>Областтык маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+  <item>
+    <userid>{81CBC511-71CC-4517-9173-4A24C693F6CC}</userid>
+    <orgid>{0BCED873-4950-449A-98E6-69C44F64D70C}</orgid>
+    <id>5973</id>
+    <nameRu>Баткенский р-н</nameRu>
+    <nameEn>Баткенский Район</nameEn>
+    <nameKg>Баткен</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{782ED7F5-D00F-47D4-B006-CF1F6B804792}</userid>
+    <orgid>{F6CECF6A-2D5D-44C1-BC2F-29A836965531}</orgid>
+    <id>6026</id>
+    <nameRu>Лейлекский р-н</nameRu>
+    <nameEn>Лейлекский Район</nameEn>
+    <nameKg>Лейлек</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{9BB0314E-2CD8-4B9F-AFC6-E90592385447}</userid>
+    <orgid>{E062B2A3-42C4-4619-B086-705E6C5367D3}</orgid>
+    <id>6085</id>
+    <nameRu>Кадамжайский р-н</nameRu>
+    <nameEn>Кадамжайский Район</nameEn>
+    <nameKg>Кадамжай</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{65505675-3A0D-4247-8E71-C56D33521A1D}</userid>
+    <orgid>{20745158-EAE3-434C-BDF5-5F893C8963ED}</orgid>
+    <id>6202</id>
+    <nameRu>г. Баткен</nameRu>
+    <nameEn>Баткен</nameEn>
+    <nameKg>Баткен</nameKg>
+    <ikaoA3/>
+    <type>6</type>
+    <typeKg>Областтык маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+  <item>
+    <userid>{B4CA2CBB-DA80-4ADF-A4DB-7DA3B601CC43}</userid>
+    <orgid>{E883C8F3-5E3C-4086-A078-91FD22E6550A}</orgid>
+    <id>6207</id>
+    <nameRu>г. Сулюкта</nameRu>
+    <nameEn>Сулюкта</nameEn>
+    <nameKg>Сүлүктү</nameKg>
+    <ikaoA3/>
+    <type>6</type>
+    <typeKg>Областтык маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+  <item>
+    <userid>{F904E5F8-BC7A-421C-A94E-4F4E1A39E8B3}</userid>
+    <orgid>{DDE31E57-4454-44EE-AFA9-80227E3C8620}</orgid>
+    <id>6212</id>
+    <nameRu>г. Кызыл-Кия</nameRu>
+    <nameEn>Кызыл-Кия</nameEn>
+    <nameKg>Кызыл-Кыя</nameKg>
+    <ikaoA3/>
+    <type>6</type>
+    <typeKg>Областтык маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+  <item>
+    <userid>{49D60834-B5F4-4329-A3E8-9E2FB9822AA4}</userid>
+    <orgid>{C3C63817-FFB3-4905-BC70-8C3A3DBB67DC}</orgid>
+    <id>6294</id>
+    <nameRu>Араванский р-н</nameRu>
+    <nameEn>Араванский Район</nameEn>
+    <nameKg>Араван</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{EED066C4-492D-415F-BEB2-30011FA85652}</userid>
+    <orgid>{3A305A9A-D30E-4C38-9E41-09DF993A658E}</orgid>
+    <id>6352</id>
+    <nameRu>Кара-Сууйский р-н</nameRu>
+    <nameEn>Кара-Сууский Район</nameEn>
+    <nameKg>Кара-Суу</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{30409A81-456A-4B24-BC69-9CE4E2DCB46E}</userid>
+    <orgid>{E0AF1DF7-AA64-45DD-873E-510CD413AD35}</orgid>
+    <id>6495</id>
+    <nameRu>Ноокатский р-н</nameRu>
+    <nameEn>Ноокатский Район</nameEn>
+    <nameKg>Ноокат</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{8895E437-9717-49E4-A3C8-56CC537197F2}</userid>
+    <orgid>{B0B7490F-E48D-4DC7-9548-0505D73C858F}</orgid>
+    <id>6653</id>
+    <nameRu>Узгенский р-н</nameRu>
+    <nameEn>Узгенский Район</nameEn>
+    <nameKg>Өзгөн</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{C8C0529B-9352-4311-81F5-E40B04096D43}</userid>
+    <orgid>{2F8C280E-6C97-41D5-B24F-7D0DF4FF4C0E}</orgid>
+    <id>6655</id>
+    <nameRu>г. Узген</nameRu>
+    <nameEn>Узген</nameEn>
+    <nameKg>Өзгөн</nameKg>
+    <ikaoA3/>
+    <type>7</type>
+    <typeKg>Райондук маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+
+  <item>
+    <userid>{E2024327-6230-4E25-AFD9-A128D3B94951}</userid>
+    <orgid>{5903E184-79E4-4630-AD91-FD488B84B832}</orgid>
+    <id>6219</id>
+    <nameRu>Алайский р-н</nameRu>
+    <nameEn>Алайский Район</nameEn>
+    <nameKg>Алай</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{6138D008-A369-43EB-886E-31DC56ED8B81}</userid>
+    <orgid>{2A0481C0-FB12-4048-9153-CB7AE997A26C}</orgid>
+    <id>6589</id>
+    <nameRu>Кара-Кулжинский р-н</nameRu>
+    <nameEn>Кара-Кулжинский Район</nameEn>
+    <nameKg>Кара-Кулжа</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{21819890-3FC2-431F-B040-4D50ECE193A8}</userid>
+    <orgid>{8A7D0C1C-A4A7-4582-8D65-8023CDB273E1}</orgid>
+    <id>6778</id>
+    <nameRu>Чон-Алайский р-н</nameRu>
+    <nameEn>Чон-Алайский Район</nameEn>
+    <nameKg>Чоң-Алай</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{C2827C0B-7760-4F21-BB5B-D1F576BEBE6C}</userid>
+    <orgid>{17A6CA38-8B7B-4F5C-973B-18F31646CC03}</orgid>
+    <id>6804</id>
+    <nameRu>Кара-Бууринский р-н</nameRu>
+    <nameEn>Кара-Бууринский Район</nameEn>
+    <nameKg>Кара-Буура</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{43106871-F8A9-4DD2-91C6-A62CE3594270}</userid>
+    <orgid>{C285A1F2-2114-4752-A626-A235C6D6F2B1}</orgid>
+    <id>6837</id>
+    <nameRu>Бакай-Атинский р-н</nameRu>
+    <nameEn>Бакай-Атинский Район</nameEn>
+    <nameKg>Бакай-Ата</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{3BFB90BC-8800-4CB1-8032-464D6C82B388}</userid>
+    <orgid>{376FF578-372D-43A4-818E-31BC64327BEF}</orgid>
+    <id>6867</id>
+    <nameRu>Манасский р-н</nameRu>
+    <nameEn>Манасский Район</nameEn>
+    <nameKg>Манас</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{7F0F3C67-8CDA-4E91-A5C8-726B39182775}</userid>
+    <orgid>{1E5868C3-B522-4DBF-BC8F-02C75A899C0F}</orgid>
+    <id>6896</id>
+    <nameRu>Таласский р-н</nameRu>
+    <nameEn>Таласский Район</nameEn>
+    <nameKg>Талас</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{225DF425-0829-4DB1-B14D-A33358AF4D5C}</userid>
+    <orgid>{02992EB8-E107-408E-954E-E322A73B433A}</orgid>
+    <id>6939</id>
+    <nameRu>г. Талас</nameRu>
+    <nameEn>Талас</nameEn>
+    <nameKg>Талас</nameKg>
+    <ikaoA3/>
+    <type>6</type>
+    <typeKg>Областтык маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+  <item>
+    <userid>{B8E24705-28A5-4F2A-BC8C-D63D660F28BA}</userid>
+    <orgid>{822E0311-F790-474D-BC97-E67CE8D14009}</orgid>
+    <id>6942</id>
+    <nameRu>Аламудунский р-н</nameRu>
+    <nameEn>Аламудунский Район</nameEn>
+    <nameKg>Аламүдүн</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{A37B5B8B-BDEB-496C-9446-F3FAD886BA32}</userid>
+    <orgid>{BEC45992-2D1C-4488-A260-FC7C5511F619}</orgid>
+    <id>7011</id>
+    <nameRu>Ысык-Атинский р-н</nameRu>
+    <nameEn>Ысык-Атинский Район</nameEn>
+    <nameKg>Ысык-Ата</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{3E65D6FA-6BE8-4650-A3E3-F227F75B76E3}</userid>
+    <orgid>{6612E6F7-BA2B-4E33-ADB9-FA0B14705E27}</orgid>
+    <id>7091</id>
+    <nameRu>Жайылский р-н</nameRu>
+    <nameEn>Жайылский Район</nameEn>
+    <nameKg>Жайыл</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{75F91E52-9565-4705-8899-9187A49A6392}</userid>
+    <orgid>{78D008DF-F7E8-4F99-92A1-42E7AE6E34C3}</orgid>
+    <id>7143</id>
+    <nameRu>Кеминский р-н</nameRu>
+    <nameEn>Кеминский Район</nameEn>
+    <nameKg>Кемин</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{EC34E518-AD58-4C55-A28C-FEDC36306969}</userid>
+    <orgid>{CA59DB1A-4AB2-4CB2-90C6-BF323E82E44A}</orgid>
+    <id>7189</id>
+    <nameRu>Московский р-н</nameRu>
+    <nameEn>Московский Район</nameEn>
+    <nameKg>Москва</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{AC5BE83D-8AB9-444E-A3C6-B65441936E5A}</userid>
+    <orgid>{72075FFB-371D-4C7B-8A5A-993E1C51CBFF}</orgid>
+    <id>7231</id>
+    <nameRu>Панфиловский р-н</nameRu>
+    <nameEn>Панфиловский Район</nameEn>
+    <nameKg>Панфилов</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{63A19FF3-31EF-4204-9F1C-E71D3BB3571A}</userid>
+    <orgid>{AA466C30-47A6-4252-989D-F44C91A120A5}</orgid>
+    <id>7351</id>
+    <nameRu>Чуйский р-н</nameRu>
+    <nameEn>Чуйский Район</nameEn>
+    <nameKg>Чүй</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{A3A727EB-503F-4AEF-A0AF-7213A813D9B0}</userid>
+    <orgid>{C139D4DE-9F64-46D2-A908-1C477B78ECCD}</orgid>
+    <id>7260</id>
+    <nameRu>Сокулукский р-н</nameRu>
+    <nameEn>Сокулукский Район</nameEn>
+    <nameKg>Сокулук</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{C979A4C2-FD6A-4F45-BC3E-30B8489F45E0}</userid>
+    <orgid>{CAE58A37-FBE8-49AA-8E09-B167F871A5E8}</orgid>
+    <id>7401</id>
+    <nameRu>г. Токмок</nameRu>
+    <nameEn>Токмок</nameEn>
+    <nameKg>Токмок</nameKg>
+    <ikaoA3/>
+    <type>6</type>
+    <typeKg>Областтык маанидеги шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+  <item>
+    <userid>{395B7F88-37CF-466A-A0C8-DE3D4BD42AC3}</userid>
+    <orgid>{34DDCAF2-EB08-48E7-894A-29C929D62C83}</orgid>
+    <id>7410</id>
+    <nameRu>Первомайский р-н</nameRu>
+    <nameEn>Первомайский Район</nameEn>
+    <nameKg>Биринчи Май</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{C89812D7-8D4E-4D63-A03F-1EEB512AE856}</userid>
+    <orgid>{0BADBCA1-ADD3-4B74-9A95-60F2EED92118}</orgid>
+    <id>7411</id>
+    <nameRu>Свердловский р-н</nameRu>
+    <nameEn>Свердловский Район</nameEn>
+    <nameKg>Свердлов</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{1DBF9D1B-3CD9-4E7A-9C1E-67EDDF42D0B2}</userid>
+    <orgid>{2AB93962-2A1F-42D4-9E70-78931B9A413D}</orgid>
+    <id>7404</id>
+    <nameRu>Ленинский р-н</nameRu>
+    <nameEn>Ленинский Район</nameEn>
+    <nameKg>Ленин</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{A28BE9EF-2B11-45C5-9141-3B6F25C07D65}</userid>
+    <orgid>{17C0AC69-2247-41E8-B086-54599FE11CED}</orgid>
+    <id>7409</id>
+    <nameRu>Октябрьский р-н</nameRu>
+    <nameEn>Октябрьский Район</nameEn>
+    <nameKg>Октябрь</nameKg>
+    <ikaoA3/>
+    <type>3</type>
+    <typeKg>Району</typeKg>
+    <typeKgShort>р-ну</typeKgShort>
+  </item>
+  <item>
+    <userid>{8488107A-B167-4AB5-B51E-D750850C5F78}</userid>
+    <orgid>{A99E469A-E8D4-4139-B89A-CE4AF6AA0733}</orgid>
+    <id>7412</id>
+    <nameRu>г. Ош</nameRu>
+    <nameEn>Ош</nameEn>
+    <nameKg>Ош</nameKg>
+    <ikaoA3/>
+    <type>5</type>
+    <typeKg>Республикага караган шаар</typeKg>
+    <typeKgShort>ш.</typeKgShort>
+  </item>
+</root>

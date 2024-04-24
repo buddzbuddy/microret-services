@@ -30,7 +30,7 @@ namespace api.Tests.Systems.Services
         public void Validate_WhenCalled_ThrowsNullError()
         {
             //Arrange
-            ubkInputJsonDTO.PersonDetailsInfo? person = null;
+            PersonDetailsInfo? person = null;
             IValidateExcludingInputs sut = new ValidateExcludingInputsImpl(Mock.Of<IDataHelper>(),
                 Mock.Of<IUnemployeeValidator>(), Mock.Of<ISFService>());
 
