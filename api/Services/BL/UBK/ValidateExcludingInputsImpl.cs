@@ -23,7 +23,7 @@ namespace api.Services.BL.UBK
             _sfService = sfService;
         }
 
-        public void Validate(ubkInputJsonDTO.PersonDetailsInfo? person)
+        public void Validate(PersonDetailsInfo? person)
         {
             if (person == null)
                 throw new ArgumentNullException(nameof(person),

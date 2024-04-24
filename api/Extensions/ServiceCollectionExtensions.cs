@@ -1,10 +1,12 @@
 ﻿using api.Contracts.BL;
+using api.Contracts.BL.CISSA;
 using api.Contracts.BL.UBK;
 using api.Contracts.BL.Verifiers;
 using api.Contracts.Helpers;
 using api.Infrastructure.HttpClients;
 using api.Infrastructure.Swagger;
 using api.Services.BL;
+using api.Services.BL.CISSA;
 using api.Services.BL.UBK;
 using api.Services.BL.Verifiers;
 using api.Services.Helpers;
@@ -155,6 +157,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IPersonDataVerifier, PersonDataVerifierImpl>();
         services.AddScoped<IPinVerifier, PinVerifierImpl>();
         services.AddScoped<IDataHelper, DataHelperImpl>();
+        services.AddScoped<ICissaDataProvider, CissaDataProviderImpl>();
+        services.AddScoped<IAddressApiHelper, AddressApiHelperImpl>();
 
     }
 }
