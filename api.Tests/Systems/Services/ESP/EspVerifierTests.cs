@@ -1,9 +1,9 @@
-﻿using api.Contracts.BL.UBK;
+﻿using api.Contracts.BL.ESP;
 using api.Contracts.BL.Verifiers;
 using api.Domain;
 using api.Models.BL;
 using api.Resources;
-using api.Services.BL.UBK;
+using api.Services.BL.ESP;
 using api.Tests.Helpers;
 using api.Tests.Infrastructure;
 using FluentAssertions;
@@ -16,7 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
 
-namespace api.Tests.Systems.Services.UBK
+namespace api.Tests.Systems.Services.ESP
 {
     public class EspVerifierTests : TestUtils
     {
@@ -28,8 +28,8 @@ namespace api.Tests.Systems.Services.UBK
         public void VerifyParsedJsonData_WhenCalled_ThrowsObjectNullError()
         {
             //Arrange
-            ubkInputModelDTO? nullJson = null;
-            IUbkVerifier sut = new UbkVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
+            espInputModelDTO? nullJson = null;
+            IEspVerifier sut = new EspVerifierImpl(Mock.Of<IPersonalIdentityVerifier>());
 
             //Act
             var ex = Assert.Throws<DomainException>(() => sut.VerifyInputModel(nullJson));
@@ -42,8 +42,8 @@ namespace api.Tests.Systems.Services.UBK
         public void VerifyParsedJsonData_WhenCalled_ThrowsIDNullError()
         {
             //Arrange
-            ubkInputModelDTO? nullJson = new();
-            IUbkVerifier sut = new UbkVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
+            espInputModelDTO? nullJson = new();
+            IEspVerifier sut = new EspVerifierImpl(Mock.Of<IPersonalIdentityVerifier>());
 
             //Act
             var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyInputModel(nullJson));
@@ -57,8 +57,8 @@ namespace api.Tests.Systems.Services.UBK
         public void VerifyParsedJsonData_WhenCalled_ReturnsOK()
         {
             //Arrange
-            ubkInputModelDTO? nullJson = new() { ID = 123 };
-            IUbkVerifier sut = new UbkVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
+            espInputModelDTO? nullJson = new() { ID = 123 };
+            IEspVerifier sut = new EspVerifierImpl(Mock.Of<IPersonalIdentityVerifier>());
 
             //Act
             sut.VerifyInputModel(nullJson);
