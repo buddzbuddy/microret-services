@@ -27,7 +27,7 @@ namespace api.Tests.Systems.Controllers
         public void VerifyControllers()
         {
             var app = ApplicationHelper.GetWebApplication();
-            var controllersAssembly = typeof(WeatherForecastController).Assembly;
+            var controllersAssembly = typeof(ubkController).Assembly;
             var controllers = controllersAssembly.ExportedTypes.Where(x => typeof(ControllerBase).IsAssignableFrom(x));
             var activator = app.Services.GetService<IControllerActivator>();
             var serviceProvider = app.Services.GetService<IServiceProvider>();
