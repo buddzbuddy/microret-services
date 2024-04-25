@@ -38,7 +38,7 @@ namespace api.Services.BL.UBK
         public async Task UpdatePackageInfo(setApplicationResultDTO? dto)
         {
             if(dto == null) throw new ArgumentNullException(nameof(dto), ErrorMessageResource.NullDataProvidedError);
-            StaticReferences.CheckNulls(dto);
+            StaticReferences.CheckNulls(dto, "appId", "Decision");
             await _dataSvc.UpdatePackageInfo(appId: dto.appId!.Value, decision: dto.Decision!, dto.RejectionReason ?? "");
             var originAppId = await _dataSvc.GetOriginAppID(dto.appId!.Value);
             //TODO: call http microret's api
