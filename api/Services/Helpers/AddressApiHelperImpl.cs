@@ -16,9 +16,9 @@ namespace api.Services.Helpers
     {
         private readonly HttpClient _httpClient;
         private readonly string addressApiHost;
-        public AddressApiHelperImpl(HttpClient httpClient, IConfiguration configuration)
+        public AddressApiHelperImpl(IConfiguration configuration)
         {
-            _httpClient = httpClient;
+            _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Add("Accept", "text/xml");
             _httpClient.DefaultRequestHeaders.Add("ContentType", "text/xml;charset=\"utf-8\"");
             addressApiHost = configuration.GetValue<string>("AddressApiHost")

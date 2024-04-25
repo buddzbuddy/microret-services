@@ -1,5 +1,6 @@
 ﻿using api.Contracts.BL.CISSA;
 using api.Contracts.BL.UBK;
+using api.Contracts.Helpers;
 using api.Models.BL;
 using api.Services.BL.UBK;
 using api.Tests.Helpers;
@@ -41,7 +42,7 @@ namespace api.Tests.Systems.Services
             s.CreateCissaApplication(It.IsAny<PersonDetailsInfo>(),
             StaticCissaReferences.PAYMENT_TYPE_UBK)).ReturnsAsync(expectedResult);
             IUbkService sut = new UbkServiceImpl(dataSvc, verifier, dataParserMock.Object,
-                mockCissaDataProvider.Object);
+                mockCissaDataProvider.Object, Mock.Of<IHttpService>());
 
             //Act
             var result  = await sut.CreateApplication(json_data);
