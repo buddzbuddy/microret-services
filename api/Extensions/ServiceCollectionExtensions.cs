@@ -159,6 +159,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IDataHelper, DataHelperImpl>();
         services.AddScoped<ICissaDataProvider, CissaDataProviderImpl>();
         services.AddScoped<IAddressApiHelper, AddressApiHelperImpl>();
+        services.AddScoped<IHttpService, HttpServiceImpl>();
 
     }
 }
