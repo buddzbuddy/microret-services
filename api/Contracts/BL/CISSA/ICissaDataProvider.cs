@@ -1,5 +1,5 @@
 ﻿using api.Models.BL;
-using static api.Models.BL.ubkInputJsonDTO;
+using static api.Models.BL.ubkInputModelDTO;
 
 namespace api.Contracts.BL.CISSA
 {
@@ -9,6 +9,6 @@ namespace api.Contracts.BL.CISSA
             DefineUserCredsFromAddressData(ResidentialAddressDTO? addressData);
 
         Task<(string regNo, Guid appId)>
-            CreateCissaApplication(PersonDetailsInfo applicantPerson, Guid paymentType);
+            CreateCissaApplication(PersonDetailsDTO applicantPerson, Guid? paymentType = null);
     }
 }

@@ -1,4 +1,4 @@
-﻿using api.Contracts.BL.UBK;
+﻿using api.Contracts.BL.ESP;
 using api.Models.BL;
 using System.Text.Json;
 
@@ -7,30 +7,30 @@ namespace api.Apis.V1.Controllers
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class ubkController : ControllerBase
+    public class espController : ControllerBase
     {
-        private readonly IUbkService ubkService;
-        public ubkController(IUbkService ubkService)
+        private readonly IEspService _espService;
+        public espController(IEspService ubkService)
         {
-            this.ubkService = ubkService;
+            _espService = ubkService;
         }
 
         /// <summary>
-        ///   Данная API принимает заявление на получение пособия Уй-булоого комок
+        ///   Данная API принимает заявление на получение ежемесячного социального пособия
         /// </summary>
         /// <response code="200">returns newly created ID</response>
         /// <response code="400">Error with description</response>
         [HttpPost("create-application")]
         public async Task<createApplicationResultDTO> CreateApplication([FromBody]JsonElement data)
         {
-            var (regNo, appId) = await ubkService.CreateApplication(data.ToString());
+            var (regNo, appId) = await _espService.CreateApplication(data.ToString());
             return new createApplicationResultDTO { regNo = regNo, appId = appId };
         }
 
         [HttpPost("set-result")]
         public async Task SetResult([FromBody] setApplicationResultDTO dto)
         {
-            await ubkService.SetApplicationResult(dto);
+            await _espService.SetApplicationResult(dto);
         }
     }
 }

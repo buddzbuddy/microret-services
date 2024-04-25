@@ -24,7 +24,7 @@ namespace api.Services.BL.CISSA
         }
 
         public async Task<(string regNo, Guid appId)>
-            CreateCissaApplication(PersonDetailsInfo applicantPerson, Guid paymentType)
+            CreateCissaApplication(PersonDetailsDTO applicantPerson, Guid? paymentType)
         {
             (var orgId, var userId, var orgPositionId, var orgCode, var regNoLastValue) = await
                 DefineUserCredsFromAddressData(applicantPerson.ResidentialAddress);
@@ -42,7 +42,7 @@ namespace api.Services.BL.CISSA
         }
 
 
-        private SocialApplicationDTO BuildApplication(PersonDetailsInfo applicantPerson, string regNo, Guid paymentType)
+        private SocialApplicationDTO BuildApplication(PersonDetailsDTO applicantPerson, string regNo, Guid? paymentType)
         {
             var model = new SocialApplicationDTO
             {
@@ -307,15 +307,16 @@ namespace api.Services.BL.CISSA
                 UserId = userId,
                 Value = socialApplication.ApplyType
             });
-            model.enumAttributes.Add(new()
-            {
-                Created = created,
-                Def_Id = CissaExtensions.GetDefId<SocialApplicationDTO>
-                        (nameof(socialApplication.PaymentType)),
-                Document_Id = socialApplication.Id,
-                UserId = userId,
-                Value = socialApplication.PaymentType
-            });
+            if (socialApplication.PaymentType != null)
+                model.enumAttributes.Add(new()
+                {
+                    Created = created,
+                    Def_Id = CissaExtensions.GetDefId<SocialApplicationDTO>
+                            (nameof(socialApplication.PaymentType)),
+                    Document_Id = socialApplication.Id,
+                    UserId = userId,
+                    Value = socialApplication.PaymentType.Value
+                });
 
             model.intAttributes.Add(new() { Created = created,
             Def_Id = CissaExtensions.GetDefId<SocialApplicationDTO>

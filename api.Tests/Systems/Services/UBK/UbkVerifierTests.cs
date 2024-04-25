@@ -1,4 +1,5 @@
 ﻿using api.Contracts.BL.UBK;
+using api.Contracts.BL.Verifiers;
 using api.Domain;
 using api.Models.BL;
 using api.Resources;
@@ -15,7 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
 
-namespace api.Tests.Systems.Services
+namespace api.Tests.Systems.Services.UBK
 {
     public class UbkVerifierTests : TestUtils
     {
@@ -24,42 +25,14 @@ namespace api.Tests.Systems.Services
         }
 
         [Fact]
-        public void VerifySrcJson_WhenCalled_ThrowsEmptyError()
-        {
-            //Arrange
-            var json = "";
-            IUbkVerifier sut = new UbkVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
-
-            //Act
-            var ex = Assert.Throws<DomainException>(() => sut.VerifySrcJson(json));
-
-            //Assert
-            ex.Message.Should().Be(ErrorMessageResource.JsonEmptyError);
-        }
-
-        [Fact]
-        public void VerifySrcJson_WhenCalled_ThrowsInvalidJsonError()
-        {
-            //Arrange
-            var json = "asdadas";
-            IUbkVerifier sut = new UbkVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
-
-            //Act
-            var ex = Assert.Throws<DomainException>(() => sut.VerifySrcJson(json));
-
-            //Assert
-            ex.Message.Should().Be(ErrorMessageResource.JsonInvalidError);
-        }
-
-        [Fact]
         public void VerifyParsedJsonData_WhenCalled_ThrowsObjectNullError()
         {
             //Arrange
-            ubkInputJsonDTO? nullJson = null;
+            ubkInputModelDTO? nullJson = null;
             IUbkVerifier sut = new UbkVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
 
             //Act
-            var ex = Assert.Throws<DomainException>(() => sut.VerifyParsedJsonData(nullJson));
+            var ex = Assert.Throws<DomainException>(() => sut.VerifyInputModel(nullJson));
 
             //Assert
             ex.Message.Should().Be(ErrorMessageResource.JsonObjectNullError);
@@ -69,11 +42,11 @@ namespace api.Tests.Systems.Services
         public void VerifyParsedJsonData_WhenCalled_ThrowsIDNullError()
         {
             //Arrange
-            ubkInputJsonDTO? nullJson = new();
+            ubkInputModelDTO? nullJson = new();
             IUbkVerifier sut = new UbkVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
 
             //Act
-            var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyParsedJsonData(nullJson));
+            var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyInputModel(nullJson));
 
             //Assert
             ex.ParamName.Should().Be(nameof(nullJson.ID));
@@ -84,11 +57,11 @@ namespace api.Tests.Systems.Services
         public void VerifyParsedJsonData_WhenCalled_ReturnsOK()
         {
             //Arrange
-            ubkInputJsonDTO? nullJson = new() { ID = 123 };
+            ubkInputModelDTO? nullJson = new() { ID = 123 };
             IUbkVerifier sut = new UbkVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
 
             //Act
-            sut.VerifyParsedJsonData(nullJson);
+            sut.VerifyInputModel(nullJson);
         }
     }
 }

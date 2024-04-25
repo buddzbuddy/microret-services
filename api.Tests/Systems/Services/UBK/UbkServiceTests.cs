@@ -1,4 +1,5 @@
-﻿using api.Contracts.BL.CISSA;
+﻿using api.Contracts.BL;
+using api.Contracts.BL.CISSA;
 using api.Contracts.BL.UBK;
 using api.Contracts.Helpers;
 using api.Models.BL;
@@ -15,7 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
 
-namespace api.Tests.Systems.Services
+namespace api.Tests.Systems.Services.UBK
 {
     public class UbkServiceTests : TestUtils
     {
@@ -35,17 +36,17 @@ namespace api.Tests.Systems.Services
 ";
             var dataSvc = Mock.Of<IUbkDataService>();
             var verifier = Mock.Of<IUbkVerifier>();
-            var dataParserMock = new Mock<IUbkInputDataParser>();
-            dataParserMock.Setup(s => s.ParseFromJson(json_data)).Returns(new ubkInputJsonDTO());
+            var dataParserMock = new Mock<IInputJsonParser>();
+            dataParserMock.Setup(s => s.ParseToModel<ubkInputModelDTO>(json_data)).Returns(new ubkInputModelDTO());
             var mockCissaDataProvider = new Mock<ICissaDataProvider>();
             mockCissaDataProvider.Setup(s =>
-            s.CreateCissaApplication(It.IsAny<PersonDetailsInfo>(),
+            s.CreateCissaApplication(It.IsAny<PersonDetailsDTO>(),
             StaticCissaReferences.PAYMENT_TYPE_UBK)).ReturnsAsync(expectedResult);
             IUbkService sut = new UbkServiceImpl(dataSvc, verifier, dataParserMock.Object,
                 mockCissaDataProvider.Object, Mock.Of<IHttpService>());
 
             //Act
-            var result  = await sut.CreateApplication(json_data);
+            var result = await sut.CreateApplication(json_data);
 
             //Assert
             Assert.Equal(expectedResult, result);

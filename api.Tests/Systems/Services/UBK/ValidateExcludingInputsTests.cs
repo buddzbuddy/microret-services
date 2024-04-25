@@ -1,10 +1,10 @@
-﻿using api.Contracts.BL.PropsValidations;
-using api.Contracts.BL.UBK;
+﻿using api.Contracts.BL.UBK;
+using api.Contracts.BL.UBK.PropsValidations;
 using api.Contracts.Helpers;
 using api.Models.BL;
 using api.Models.Enums;
 using api.Resources;
-using api.Services.BL.PropsValidations;
+using api.Services.BL.UBK.PropsValidations;
 using api.Services.BL.UBK;
 using api.Tests.Infrastructure;
 using api.Utils;
@@ -16,9 +16,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
-using static api.Models.BL.ubkInputJsonDTO;
+using static api.Models.BL.ubkInputModelDTO;
 
-namespace api.Tests.Systems.Services
+namespace api.Tests.Systems.Services.UBK
 {
     public class ValidateExcludingInputsTests : TestUtils
     {
@@ -30,7 +30,7 @@ namespace api.Tests.Systems.Services
         public void Validate_WhenCalled_ThrowsNullError()
         {
             //Arrange
-            PersonDetailsInfo? person = null;
+            PersonDetailsDTO? person = null;
             IValidateExcludingInputs sut = new ValidateExcludingInputsImpl(Mock.Of<IDataHelper>(),
                 Mock.Of<IUnemployeeValidator>(), Mock.Of<ISFService>());
 
@@ -43,7 +43,7 @@ namespace api.Tests.Systems.Services
         public void Validate_WhenCalled_ThrowsUnemploymentStatusNullError()
         {
             //Arrange
-            var person = new ApplicantDTO();
+            var person = new PersonDetailsDTO();
             var dataHelperMock = new Mock<IDataHelper>();
             dataHelperMock.Setup(s =>
             s.CalcAgeFromPinForToday(It.IsAny<string>())).Returns(StaticReferences.MEN_RETIREMENT_AGE - 1);
@@ -62,7 +62,7 @@ namespace api.Tests.Systems.Services
         public void Validate_WhenCalled_ThrowsUnemploymentStatusIncorrectError()
         {
             //Arrange
-            var person = new ApplicantDTO() { UnemployedStatusInfo = new() };
+            var person = new PersonDetailsDTO() { UnemployedStatusInfo = new() };
             var dataHelperMock = new Mock<IDataHelper>();
             dataHelperMock.Setup(s =>
             s.CalcAgeFromPinForToday(It.IsAny<string>())).Returns(StaticReferences.MEN_RETIREMENT_AGE - 1);
@@ -85,7 +85,7 @@ namespace api.Tests.Systems.Services
         public void Validate_WhenCalled_ReturnsOK()
         {
             //Arrange
-            var person = new ApplicantDTO()
+            var person = new PersonDetailsDTO()
             {
                 UnemployedStatusInfo = new() { Status = StaticReferences.UNEMPLOYEE_STATUS_NAME }
             };

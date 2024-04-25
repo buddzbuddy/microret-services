@@ -1,6 +1,6 @@
-﻿using api.Contracts.BL.PropsValidations;
+﻿using api.Contracts.BL.UBK.PropsValidations;
 using api.Models.BL;
-using api.Services.BL.PropsValidations;
+using api.Services.BL.UBK.PropsValidations;
 using api.Tests.Infrastructure;
 using api.Utils;
 using FluentAssertions;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
 
-namespace api.Tests.Systems.Services
+namespace api.Tests.Systems.Services.UBK
 {
     public class UnemployeeValidatorTests : TestUtils
     {

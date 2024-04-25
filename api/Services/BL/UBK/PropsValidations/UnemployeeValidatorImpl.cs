@@ -1,9 +1,9 @@
-﻿using api.Contracts.BL.PropsValidations;
+﻿using api.Contracts.BL.UBK.PropsValidations;
 using api.Models.BL;
 using api.Utils;
 using System;
 
-namespace api.Services.BL.PropsValidations
+namespace api.Services.BL.UBK.PropsValidations
 {
     public class UnemployeeValidatorImpl : IUnemployeeValidator
     {

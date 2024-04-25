@@ -16,7 +16,7 @@ namespace api.Models.BL
         [DefId("{BD22FDAB-7C65-46B4-922B-D9DE61C152E5}")]
         public required PersonSheetDTO Applicant { get; set; }
         [DefId("{DF98548C-38E9-49AA-934B-5ECAD06955F0}")]
-        public required Guid PaymentType { get; set; }
+        public required Guid? PaymentType { get; set; }
         [DefId("{1BCF8AA6-7662-4128-BA27-FF4EE0125C76}")]
         public string? Town { get; set; }
         [DefId("{F9FFD608-CE1A-436F-B8BA-26B7E7D9586B}")]

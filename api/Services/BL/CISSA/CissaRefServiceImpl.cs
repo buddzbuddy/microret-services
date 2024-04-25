@@ -1,4 +1,4 @@
-﻿using api.Contracts.BL;
+﻿using api.Contracts.BL.CISSA;
 using api.Domain;
 using api.Models.BL;
 using Microsoft.Data.SqlClient;
@@ -6,13 +6,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace api.Services.BL
+namespace api.Services.BL.CISSA
 {
     public class CissaRefServiceImpl : ICissaRefService
     {
         private readonly IConfiguration _configuration;
         private readonly ILogger<CissaRefServiceImpl> _logger;
-        public CissaRefServiceImpl(IConfiguration configuration, ILogger<CissaRefServiceImpl> logger) {
+        public CissaRefServiceImpl(IConfiguration configuration, ILogger<CissaRefServiceImpl> logger)
+        {
             _configuration = configuration;
             _logger = logger;
         }

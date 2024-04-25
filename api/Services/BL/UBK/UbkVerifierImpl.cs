@@ -1,4 +1,5 @@
 ﻿using api.Contracts.BL.UBK;
+using api.Contracts.BL.Verifiers;
 using api.Domain;
 using api.Models.BL;
 using Newtonsoft.Json;
@@ -17,41 +18,19 @@ namespace api.Services.BL.UBK
             _identityVerifier = identityVerifier;
             _propertyVerifier = propertyVerifier;
         }
-        public void VerifySrcJson(string? jsonData)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(jsonData))
-                    throw new DomainException(ErrorMessageResource.JsonEmptyError);
-                var jObject = JObject.Parse(jsonData);
-                if(jObject == null || jObject.Count == 0)
-                {
-                    throw new DomainException(ErrorMessageResource.JsonEmptyError);
-                }
-            }
-            catch (DomainException)
-            {
-                throw;
-            }
-            catch (Exception)
-            {
-                throw new DomainException(ErrorMessageResource.JsonInvalidError);
-            }
-            
-        }
 
-        public void VerifyParsedJsonData(ubkInputJsonDTO? parsedDataJson)
+        public void VerifyInputModel(ubkInputModelDTO? inputModel)
         {
-            if (parsedDataJson == null)
+            if (inputModel == null)
                 throw new DomainException(ErrorMessageResource.JsonObjectNullError);
-            if (parsedDataJson.ID == null)
-                throw new ArgumentNullException(nameof(parsedDataJson.ID),
+            if (inputModel.ID == null)
+                throw new ArgumentNullException(nameof(inputModel.ID),
                     ErrorMessageResource.NullDataProvidedError);
-            _identityVerifier.VerifyApplicant(parsedDataJson.Applicant);
-            _identityVerifier.VerifyFamilyMembers(parsedDataJson.FamilyMembers);
+            _identityVerifier.VerifyApplicant(inputModel.Applicant);
+            _identityVerifier.VerifyFamilyMembers(inputModel.FamilyMembers);
 
             //TODO: Verify all props
-            _propertyVerifier.VerifyProps(parsedDataJson.Applicant);
+            _propertyVerifier.VerifyProps(inputModel.Applicant);
         }
 
         

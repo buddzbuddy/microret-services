@@ -1,6 +1,6 @@
-﻿namespace api.Contracts.BL.UBK
+﻿namespace api.Contracts.BL.ESP
 {
-    public interface IUbkDataService
+    public interface IEspDataService
     {
         Task<int> SaveJson(string srcJson);
         Task UpdatePackageInfo(int pkgId, string regNo, Guid appId);

@@ -1,13 +1,12 @@
 ﻿using api.Contracts.BL;
 using api.Contracts.BL.Verifiers;
-using api.Contracts.BL.UBK;
 using api.Domain;
 using api.Models.BL;
 using api.Utils;
 using System.Linq;
 using api.Contracts.Helpers;
 
-namespace api.Services.BL.UBK
+namespace api.Services.BL.Verifiers
 {
     public class PersonalIdentityVerifierImpl : IPersonalIdentityVerifier
     {
@@ -24,7 +23,7 @@ namespace api.Services.BL.UBK
             _pinVerifier = pinVerifier;
             _dataHelper = dataHelper;
         }
-        public void VerifyApplicant(ubkInputJsonDTO.ApplicantDTO? applicant)
+        public void VerifyApplicant(PersonDetailsDTO? applicant)
         {
             if (applicant == null) throw new ArgumentNullException(nameof(applicant),
                 ErrorMessageResource.NullDataProvidedError);
@@ -33,7 +32,7 @@ namespace api.Services.BL.UBK
             verifyPassportAndPersonInfo(applicant.PassportDataInfo);
             verifyFactAddress(applicant.ResidentialAddress);
         }
-        public void VerifyFamilyMembers(ubkInputJsonDTO.FamilyMemberDTO[]? familyMembers)
+        public void VerifyFamilyMembers(ubkInputModelDTO.FamilyMemberDTO[]? familyMembers)
         {
             if (familyMembers == null || familyMembers.Length == 0)
                 throw new ArgumentNullException(nameof(familyMembers),

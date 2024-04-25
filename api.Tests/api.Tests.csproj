@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Folder Include="Fixtures\" />
+    <Folder Include="Systems\Services\ESP\" />
   </ItemGroup>
 
   <ItemGroup>
