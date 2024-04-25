@@ -4,7 +4,6 @@ namespace api.Contracts.BL.UBK
 {
     public interface IUbkVerifier
     {
-        void VerifySrcJson(string? jsonData);
-        void VerifyParsedJsonData(ubkInputJsonDTO? parsedDataJson);
+        void VerifyInputModel(ubkInputModelDTO? inputModel);
     }
 }

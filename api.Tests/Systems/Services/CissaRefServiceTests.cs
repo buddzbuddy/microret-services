@@ -1,4 +1,4 @@
-using api.Contracts.BL;
+using api.Contracts.BL.CISSA;
 using api.Domain;
 using api.Models.BL;
 using api.Tests.Infrastructure;

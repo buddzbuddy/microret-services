@@ -1,5 +1,5 @@
-﻿using api.Contracts.BL.PropsValidations;
-using api.Contracts.BL.UBK;
+﻿using api.Contracts.BL.UBK;
+using api.Contracts.BL.UBK.PropsValidations;
 using api.Contracts.Helpers;
 using api.Domain;
 using api.Models.BL;
@@ -23,7 +23,7 @@ namespace api.Services.BL.UBK
             _sfService = sfService;
         }
 
-        public void Validate(PersonDetailsInfo? person)
+        public void Validate(PersonDetailsDTO? person)
         {
             if (person == null)
                 throw new ArgumentNullException(nameof(person),

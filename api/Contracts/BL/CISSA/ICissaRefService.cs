@@ -1,6 +1,6 @@
 ﻿using api.Models.BL;
 
-namespace api.Contracts.BL
+namespace api.Contracts.BL.CISSA
 {
     public interface ICissaRefService
     {

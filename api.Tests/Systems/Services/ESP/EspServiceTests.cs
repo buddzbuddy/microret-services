@@ -1,8 +1,9 @@
-﻿using api.Contracts.BL.CISSA;
-using api.Contracts.BL.UBK;
+﻿using api.Contracts.BL;
+using api.Contracts.BL.CISSA;
+using api.Contracts.BL.ESP;
 using api.Contracts.Helpers;
 using api.Models.BL;
-using api.Services.BL.UBK;
+using api.Services.BL.ESP;
 using api.Tests.Helpers;
 using api.Tests.Infrastructure;
 using api.Utils;
@@ -15,11 +16,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
 
-namespace api.Tests.Systems.Services
+namespace api.Tests.Systems.Services.ESP
 {
-    public class UbkServiceTests : TestUtils
+    public class EspServiceTests : TestUtils
     {
-        public UbkServiceTests(ITestOutputHelper output) : base(output)
+        public EspServiceTests(ITestOutputHelper output) : base(output)
         {
         }
 
@@ -33,19 +34,18 @@ namespace api.Tests.Systems.Services
 ""t1"":123,""t2"":""123""
 }
 ";
-            var dataSvc = Mock.Of<IUbkDataService>();
-            var verifier = Mock.Of<IUbkVerifier>();
-            var dataParserMock = new Mock<IUbkInputDataParser>();
-            dataParserMock.Setup(s => s.ParseFromJson(json_data)).Returns(new ubkInputJsonDTO());
+            var dataSvc = Mock.Of<IEspDataService>();
+            var verifier = Mock.Of<IEspVerifier>();
+            var dataParserMock = new Mock<IInputJsonParser>();
+            dataParserMock.Setup(s => s.ParseToModel<espInputModelDTO>(json_data)).Returns(new espInputModelDTO());
             var mockCissaDataProvider = new Mock<ICissaDataProvider>();
             mockCissaDataProvider.Setup(s =>
-            s.CreateCissaApplication(It.IsAny<PersonDetailsInfo>(),
-            StaticCissaReferences.PAYMENT_TYPE_UBK)).ReturnsAsync(expectedResult);
-            IUbkService sut = new UbkServiceImpl(dataSvc, verifier, dataParserMock.Object,
+            s.CreateCissaApplication(It.IsAny<PersonDetailsDTO>(), null)).ReturnsAsync(expectedResult);
+            IEspService sut = new EspServiceImpl(dataSvc, dataParserMock.Object, verifier,
                 mockCissaDataProvider.Object, Mock.Of<IHttpService>());
 
             //Act
-            var result  = await sut.CreateApplication(json_data);
+            var result = await sut.CreateApplication(json_data);
 
             //Assert
             Assert.Equal(expectedResult, result);

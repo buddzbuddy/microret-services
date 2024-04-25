@@ -4,6 +4,6 @@ namespace api.Contracts.BL.UBK
 {
     public interface IValidateExcludingInputs
     {
-        void Validate(PersonDetailsInfo? person);
+        void Validate(PersonDetailsDTO? person);
     }
 }

@@ -1,8 +1,8 @@
-﻿using api.Contracts.BL.PropsValidations;
+﻿using api.Contracts.BL.UBK.PropsValidations;
 using api.Contracts.BL.Verifiers;
 using api.Contracts.Helpers;
 using api.Models.BL;
-using api.Services.BL.PropsValidations;
+using api.Services.BL.UBK.PropsValidations;
 using api.Services.Helpers;
 using api.Tests.Infrastructure;
 using api.Utils;
@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
 
-namespace api.Tests.Systems.Services
+namespace api.Tests.Systems.Services.UBK
 {
     public class SFServiceTests : TestUtils
     {

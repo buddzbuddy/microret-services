@@ -1,8 +1,8 @@
-﻿using api.Contracts.BL.UBK;
-using api.Contracts.BL.Verifiers;
+﻿using api.Contracts.BL.Verifiers;
 using api.Contracts.Helpers;
 using api.Models.BL;
 using api.Services.BL.UBK;
+using api.Services.BL.Verifiers;
 using api.Tests.Helpers;
 using api.Tests.Infrastructure;
 using FluentAssertions;
@@ -26,7 +26,7 @@ namespace api.Tests.Systems.Services
         public void VerifyApplicant_WhenCalled_ThrowsApplicantNullError()
         {
             //Arrange
-            ubkInputJsonDTO.ApplicantDTO? applicant = null;
+            PersonDetailsDTO? applicant = null;
             IPersonalIdentityVerifier sut =
                 new PersonalIdentityVerifierImpl(Mock.Of<IPassportDataVerifier>(),
                 Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>(), Mock.Of<IDataHelper>());
@@ -42,7 +42,7 @@ namespace api.Tests.Systems.Services
         public void VerifyApplicant_WhenCalled_ThrowsFactAddressNullError()
         {
             //Arrange
-            ubkInputJsonDTO.ApplicantDTO applicant = new() { };
+            PersonDetailsDTO applicant = new() { };
             IPersonalIdentityVerifier sut =
                 new PersonalIdentityVerifierImpl(Mock.Of<IPassportDataVerifier>(),
                 Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>(), Mock.Of<IDataHelper>());
@@ -58,7 +58,7 @@ namespace api.Tests.Systems.Services
         public void VerifyApplicant_WhenCalled_ThrowsFactAddressRegionNullError()
         {
             //Arrange
-            ubkInputJsonDTO.ApplicantDTO applicant = new() { ResidentialAddress =
+            PersonDetailsDTO applicant = new() { ResidentialAddress =
                 new ResidentialAddressDTO { }
             };
             IPersonalIdentityVerifier sut =
@@ -77,7 +77,7 @@ namespace api.Tests.Systems.Services
         public void VerifyFamilyMembers_WhenCalled_ThrowsFamilyMembersNullError()
         {
             //Arrange
-            ubkInputJsonDTO.FamilyMemberDTO[]? familyMembers = null;
+            ubkInputModelDTO.FamilyMemberDTO[]? familyMembers = null;
             IPersonalIdentityVerifier sut =
                 new PersonalIdentityVerifierImpl(Mock.Of<IPassportDataVerifier>(),
                 Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>(), Mock.Of<IDataHelper>());
@@ -93,7 +93,7 @@ namespace api.Tests.Systems.Services
         public void VerifyFamilyMembers_WhenCalled_ThrowsFamilyMemberRoleNullError()
         {
             //Arrange
-            var familyMembers = new ubkInputJsonDTO.FamilyMemberDTO[]
+            var familyMembers = new ubkInputModelDTO.FamilyMemberDTO[]
             { new() { pin = "123", lastname = "some", firstname = "some", patronymic = "some",
                 roleId = 123 } };
             IPersonalIdentityVerifier sut =
@@ -112,7 +112,7 @@ namespace api.Tests.Systems.Services
         public void VerifyFamilyMembers_WhenCalled_ThrowsFamilyMemberRoleIdNullError()
         {
             //Arrange
-            var familyMembers = new ubkInputJsonDTO.FamilyMemberDTO[]
+            var familyMembers = new ubkInputModelDTO.FamilyMemberDTO[]
             { new() { pin = "123", lastname = "some", firstname = "some", patronymic = "some",
                 role = "some" } };
             IPersonalIdentityVerifier sut =
@@ -132,7 +132,7 @@ namespace api.Tests.Systems.Services
         {
             //Arrange
             var pin = "123";
-            var familyMembers = new ubkInputJsonDTO.FamilyMemberDTO[]
+            var familyMembers = new ubkInputModelDTO.FamilyMemberDTO[]
             { new() { pin = pin, lastname = "some", firstname = "some", patronymic = "some",
                 role = "some", roleId = 123 } };
 
@@ -154,7 +154,7 @@ namespace api.Tests.Systems.Services
         {
             //Arrange
             var pin = "123";
-            var familyMembers = new ubkInputJsonDTO.FamilyMemberDTO[]
+            var familyMembers = new ubkInputModelDTO.FamilyMemberDTO[]
             { new() { pin = pin, lastname = "some", firstname = "some", patronymic = "some",
                 role = "some", roleId = 123, BirthActByPinInfo = new() } };
 
