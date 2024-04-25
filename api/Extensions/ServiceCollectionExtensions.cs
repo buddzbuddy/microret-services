@@ -1,5 +1,6 @@
 ﻿using api.Contracts.BL;
 using api.Contracts.BL.CISSA;
+using api.Contracts.BL.ESP;
 using api.Contracts.BL.UBK;
 using api.Contracts.BL.Verifiers;
 using api.Contracts.Helpers;
@@ -7,6 +8,7 @@ using api.Infrastructure.HttpClients;
 using api.Infrastructure.Swagger;
 using api.Services.BL;
 using api.Services.BL.CISSA;
+using api.Services.BL.ESP;
 using api.Services.BL.UBK;
 using api.Services.BL.Verifiers;
 using api.Services.Helpers;
@@ -150,7 +152,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IUbkDataService, UbkDataServiceImpl>();
         services.AddScoped<IUbkService, UbkServiceImpl>();
         services.AddScoped<IUbkVerifier, UbkVerifierImpl>();
-        services.AddScoped<IUbkInputDataParser, UbkInputDataParserImpl>();
+        services.AddScoped<IInputJsonParser, InputJsonParserImpl>();
         services.AddScoped<IPersonalIdentityVerifier, PersonalIdentityVerifierImpl>();
         services.AddScoped<IPropertyVerifier, PropertyVerifierImpl>();
         services.AddScoped<IPassportDataVerifier, PassportDataVerifierImpl>();
@@ -160,6 +162,9 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ICissaDataProvider, CissaDataProviderImpl>();
         services.AddScoped<IAddressApiHelper, AddressApiHelperImpl>();
         services.AddScoped<IHttpService, HttpServiceImpl>();
+        services.AddScoped<IEspService, EspServiceImpl>();
+        services.AddScoped<IEspVerifier, EspVerifierImpl>();
+        services.AddScoped<IEspDataService, EspDataServiceImpl>();
 
     }
 }

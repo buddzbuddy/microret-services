@@ -1,6 +1,6 @@
 ﻿using api.Models.BL;
 
-namespace api.Contracts.BL.PropsValidations
+namespace api.Contracts.BL.UBK.PropsValidations
 {
     public interface IUnemployeeValidator
     {

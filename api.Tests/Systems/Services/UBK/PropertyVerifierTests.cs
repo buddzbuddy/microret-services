@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
 
-namespace api.Tests.Systems.Services
+namespace api.Tests.Systems.Services.UBK
 {
     public class PropertyVerifierTests : TestUtils
     {
@@ -25,7 +25,7 @@ namespace api.Tests.Systems.Services
         public void VerifyProps_WhenCalled_ThrowsNullError()
         {
             //Arrange
-            PersonDetailsInfo? personDetails = null;
+            PersonDetailsDTO? personDetails = null;
             IPropertyVerifier sut = new PropertyVerifierImpl(Mock.Of<IDataHelper>());
 
             //Act & Assert
@@ -106,13 +106,23 @@ namespace api.Tests.Systems.Services
         public void VerifyMarriageData_WhenCalled_Succeeded()
         {
             //Arrange
-            MarriageActInfoDTO? marriageAct = new() { Act = "some number", Bride = new()
+            MarriageActInfoDTO? marriageAct = new()
             {
-                Pin = "123", Surname = "some surname", FirstName = "some firstname"
-            },
-            Groom = new() { Pin = "123", Surname = "some surname", FirstName = "some firstname" },
-            Crtf = new() { DocDate = new DateTime(), DocNumber = "123",
-                DocSeries = "some series", GovUnit = "some unit name"}
+                Act = "some number",
+                Bride = new()
+                {
+                    Pin = "123",
+                    Surname = "some surname",
+                    FirstName = "some firstname"
+                },
+                Groom = new() { Pin = "123", Surname = "some surname", FirstName = "some firstname" },
+                Crtf = new()
+                {
+                    DocDate = new DateTime(),
+                    DocNumber = "123",
+                    DocSeries = "some series",
+                    GovUnit = "some unit name"
+                }
             };
             IPropertyVerifier sut = new PropertyVerifierImpl(Mock.Of<IDataHelper>());
 
@@ -137,8 +147,11 @@ namespace api.Tests.Systems.Services
         public void VerifyUnemployeeStatus_WhenCalled_Succeeded()
         {
             //Arrange
-            UnemployedStatusInfoDTO? unemployedStatus = new() { Status = "some status",
-                EligibleForBenefits = false };
+            UnemployedStatusInfoDTO? unemployedStatus = new()
+            {
+                Status = "some status",
+                EligibleForBenefits = false
+            };
             IPropertyVerifier sut = new PropertyVerifierImpl(Mock.Of<IDataHelper>());
 
             //Act & Assert
