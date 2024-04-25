@@ -23,11 +23,14 @@ namespace api.Apis.V1.Controllers
         [HttpPost("create-application")]
         public async Task<createApplicationResultDTO> CreateApplication([FromBody]JsonElement data)
         {
-            var result = await ubkService.CreateApplication(data.ToString());
-            return new createApplicationResultDTO { regNo = result.regNo, appId = result.appId };
+            var (regNo, appId) = await ubkService.CreateApplication(data.ToString());
+            return new createApplicationResultDTO { regNo = regNo, appId = appId };
         }
 
-        [HttpGet("get-hello")]
-        public string getHello() => "Hello New Fourth change";
+        [HttpPost("set-result")]
+        public async Task SetResult([FromBody] setApplicationResultDTO dto)
+        {
+            await ubkService.UpdatePackageInfo(dto);
+        }
     }
 }
