@@ -19,6 +19,8 @@ namespace api.Utils
         public const int WOMEN_RETIREMENT_AGE = 58;
         public const string UNEMPLOYEE_STATUS_NAME = "Официальный безработный";
         public const int MINIMUM_NOT_ACTIVE_WORK_PERIOD_IN_MONTHS = 3;
+        public const string PAYMENT_TYPE_UBK = "UBK";
+        public const string PAYMENT_TYPE_ESP = "ESP";
 
         public static bool IsAnyNullOrEmpty<T>(T? myObject, out string[] foundNullPropNames,
             string[]? onlySpecificProps, bool exclude = false)

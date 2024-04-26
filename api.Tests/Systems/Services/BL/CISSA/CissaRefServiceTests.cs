@@ -6,7 +6,7 @@ using FluentAssertions;
 using Moq;
 using Xunit.Abstractions;
 
-namespace api.Tests.Systems.Services
+namespace api.Tests.Systems.Services.BL.CISSA
 {
     public class CissaRefServiceTests : TestUtils
     {
