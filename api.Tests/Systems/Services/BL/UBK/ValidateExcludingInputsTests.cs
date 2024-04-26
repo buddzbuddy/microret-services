@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 using Xunit.Abstractions;
 using static api.Models.BL.ubkInputModelDTO;
 
-namespace api.Tests.Systems.Services.UBK
+namespace api.Tests.Systems.Services.BL.UBK
 {
     public class ValidateExcludingInputsTests : TestUtils
     {

@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
 
-namespace api.Tests.Systems.Services
+namespace api.Tests.Systems.Services.BL
 {
     public class InputJsonParserTests : TestUtils
     {

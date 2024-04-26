@@ -1,6 +1,6 @@
-﻿namespace api.Contracts.BL.UBK
+﻿namespace api.Contracts.BL
 {
-    public interface IUbkDataService
+    public interface IDataService
     {
         Task<int> SaveJson(string srcJson);
         Task UpdatePackageInfo(int pkgId, string regNo, Guid appId);

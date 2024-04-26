@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
 
-namespace api.Tests.Systems.Services
+namespace api.Tests.Systems.Services.BL.Verifiers
 {
     public class PersonalIdentityVerifierTests : TestUtils
     {
@@ -58,7 +58,9 @@ namespace api.Tests.Systems.Services
         public void VerifyApplicant_WhenCalled_ThrowsFactAddressRegionNullError()
         {
             //Arrange
-            PersonDetailsDTO applicant = new() { ResidentialAddress =
+            PersonDetailsDTO applicant = new()
+            {
+                ResidentialAddress =
                 new ResidentialAddressDTO { }
             };
             IPersonalIdentityVerifier sut =

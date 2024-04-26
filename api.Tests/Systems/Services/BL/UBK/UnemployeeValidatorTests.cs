@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
 
-namespace api.Tests.Systems.Services.UBK
+namespace api.Tests.Systems.Services.BL.UBK
 {
     public class UnemployeeValidatorTests : TestUtils
     {
