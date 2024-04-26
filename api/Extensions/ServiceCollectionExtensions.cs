@@ -1,7 +1,15 @@
 ﻿using api.Contracts.BL;
+using api.Contracts.BL.CISSA;
+using api.Contracts.BL.UBK;
+using api.Contracts.BL.Verifiers;
+using api.Contracts.Helpers;
 using api.Infrastructure.HttpClients;
 using api.Infrastructure.Swagger;
 using api.Services.BL;
+using api.Services.BL.CISSA;
+using api.Services.BL.UBK;
+using api.Services.BL.Verifiers;
+using api.Services.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
@@ -22,10 +30,10 @@ public static class ServiceCollectionExtensions
     {
         services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-        var supportedCultures = new List<CultureInfo> { new("en"), new("fa") };
+        var supportedCultures = new List<CultureInfo> { new("ru"), new("en"), new("fa") };
         services.Configure<RequestLocalizationOptions>(options =>
         {
-            options.DefaultRequestCulture = new RequestCulture("fa");
+            options.DefaultRequestCulture = new RequestCulture("ru");
             options.SupportedCultures = supportedCultures;
             options.SupportedUICultures = supportedCultures;
         });
@@ -139,5 +147,19 @@ public static class ServiceCollectionExtensions
     public static void AddCoreServices(this IServiceCollection services)
     {
         services.AddScoped<ICissaRefService, CissaRefServiceImpl>();
+        services.AddScoped<IDataService, DataServiceImpl>();
+        services.AddScoped<ISocialAppsService, SocialAppsServiceImpl>();
+        services.AddScoped<ILogicVerifier, LogicVerifierImpl>();
+        services.AddScoped<IInputJsonParser, InputJsonParserImpl>();
+        services.AddScoped<IPersonalIdentityVerifier, PersonalIdentityVerifierImpl>();
+        services.AddScoped<IPropertyVerifier, PropertyVerifierImpl>();
+        services.AddScoped<IPassportDataVerifier, PassportDataVerifierImpl>();
+        services.AddScoped<IPersonDataVerifier, PersonDataVerifierImpl>();
+        services.AddScoped<IPinVerifier, PinVerifierImpl>();
+        services.AddScoped<IDataHelper, DataHelperImpl>();
+        services.AddScoped<ICissaDataProvider, CissaDataProviderImpl>();
+        services.AddScoped<IAddressApiHelper, AddressApiHelperImpl>();
+        services.AddScoped<IHttpService, HttpServiceImpl>();
+
     }
 }

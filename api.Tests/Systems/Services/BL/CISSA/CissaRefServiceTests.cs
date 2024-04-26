@@ -1,4 +1,4 @@
-using api.Contracts.BL;
+using api.Contracts.BL.CISSA;
 using api.Domain;
 using api.Models.BL;
 using api.Tests.Infrastructure;
@@ -6,7 +6,7 @@ using FluentAssertions;
 using Moq;
 using Xunit.Abstractions;
 
-namespace api.Tests.Systems.Services
+namespace api.Tests.Systems.Services.BL.CISSA
 {
     public class CissaRefServiceTests : TestUtils
     {

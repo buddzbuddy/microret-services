@@ -70,6 +70,15 @@ namespace api.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Providedd illegal data.
+        /// </summary>
+        public static string IllegalDataProvidedError {
+            get {
+                return ResourceManager.GetString("IllegalDataProvidedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email format is not valid..
         /// </summary>
         public static string InvalidEmailError {
@@ -79,11 +88,83 @@ namespace api.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Length should be {0} characters.
+        /// </summary>
+        public static string InvalidStringLengthError {
+            get {
+                return ResourceManager.GetString("InvalidStringLengthError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty JSON received..
+        /// </summary>
+        public static string JsonEmptyError {
+            get {
+                return ResourceManager.GetString("JsonEmptyError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to JSON is invalid.
+        /// </summary>
+        public static string JsonInvalidError {
+            get {
+                return ResourceManager.GetString("JsonInvalidError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parsed JSON-object is null..
+        /// </summary>
+        public static string JsonObjectNullError {
+            get {
+                return ResourceManager.GetString("JsonObjectNullError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximum length of {0} is &apos;{1}&apos; characters..
         /// </summary>
         public static string MaxLengthError {
             get {
                 return ResourceManager.GetString("MaxLengthError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are not eligible to get this payment by the reason: {0}.
+        /// </summary>
+        public static string NotEligibleWithReasonError {
+            get {
+                return ResourceManager.GetString("NotEligibleWithReasonError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provided null data.
+        /// </summary>
+        public static string NullDataProvidedError {
+            get {
+                return ResourceManager.GetString("NullDataProvidedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passport is expired.
+        /// </summary>
+        public static string PassportExpiredError {
+            get {
+                return ResourceManager.GetString("PassportExpiredError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Birthdate section couldn&apos;t be extracted. Please make sure that PIN data is correct.
+        /// </summary>
+        public static string PinBirthDateSectionIllegalError {
+            get {
+                return ResourceManager.GetString("PinBirthDateSectionIllegalError", resourceCulture);
             }
         }
         
@@ -111,6 +192,42 @@ namespace api.Resources {
         public static string StringLengthError {
             get {
                 return ResourceManager.GetString("StringLengthError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The string should contain only digits.
+        /// </summary>
+        public static string StringShouldContainOnlyDigitsError {
+            get {
+                return ResourceManager.GetString("StringShouldContainOnlyDigitsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The string should contain only letters.
+        /// </summary>
+        public static string StringShouldContainOnlyLettersError {
+            get {
+                return ResourceManager.GetString("StringShouldContainOnlyLettersError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unemployee status incorrect.
+        /// </summary>
+        public static string UnemployeeStatusIncorrectError {
+            get {
+                return ResourceManager.GetString("UnemployeeStatusIncorrectError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have insurance from employer.
+        /// </summary>
+        public static string YouHaveInsuranceError {
+            get {
+                return ResourceManager.GetString("YouHaveInsuranceError", resourceCulture);
             }
         }
     }

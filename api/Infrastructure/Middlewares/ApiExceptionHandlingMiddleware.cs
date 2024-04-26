@@ -56,6 +56,42 @@ namespace api.Infrastructure.Middlewares
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 result = JsonSerializer.Serialize(problemDetails);
             }
+            else if (ex is ArgumentException e1)
+            {
+                var problemDetails = new CustomValidationProblemDetails(new List<ValidationError> { new() { Message = e1.Message } })
+                {
+                    Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                    Title = "One or more validation errors occurred.",
+                    Status = (int)HttpStatusCode.BadRequest,
+                    Instance = context.Request.Path,
+                };
+                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                result = JsonSerializer.Serialize(problemDetails);
+            }
+            else if (ex is ArgumentNullException e2)
+            {
+                var problemDetails = new CustomValidationProblemDetails(new List<ValidationError> { new() { Message = e2.Message } })
+                {
+                    Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                    Title = "One or more validation errors occurred.",
+                    Status = (int)HttpStatusCode.BadRequest,
+                    Instance = context.Request.Path,
+                };
+                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                result = JsonSerializer.Serialize(problemDetails);
+            }
+            else if (ex is FormatException e3)
+            {
+                var problemDetails = new CustomValidationProblemDetails(new List<ValidationError> { new() { Message = e3.Message } })
+                {
+                    Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+                    Title = "One or more validation errors occurred.",
+                    Status = (int)HttpStatusCode.BadRequest,
+                    Instance = context.Request.Path,
+                };
+                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                result = JsonSerializer.Serialize(problemDetails);
+            }
             else
             {
                 _logger.LogError(ex, $"An unhandled exception has occurred, {ex.Message}{(context.Request.Method == "POST" ? $"\nrequestBody:\n{requestBody}" : "")}");
