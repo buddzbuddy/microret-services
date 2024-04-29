@@ -2,11 +2,13 @@
 using api.Contracts.BL.CISSA;
 using api.Contracts.Helpers;
 using api.Models.BL;
+using api.Resources;
 using api.Services.BL;
 using api.Services.BL.UBK;
 using api.Tests.Helpers;
 using api.Tests.Infrastructure;
 using api.Utils;
+using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using System;
@@ -50,6 +52,74 @@ namespace api.Tests.Systems.Services.BL
 
             //Assert
             Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public async Task CreateApplication_WhenCalled_ThrowsIllegalPaymentException()
+        {
+            //Arrange
+            var json_data = @"
+{
+""t1"":123,""t2"":""123""
+}
+";
+            string paymentTypeCode = It.IsAny<string>();
+            var dataSvc = Mock.Of<IDataService>();
+            var verifier = Mock.Of<ILogicVerifier>();
+            var dataParser = Mock.Of<IInputJsonParser>();
+            var cissaDataProvider = Mock.Of<ICissaDataProvider>();
+            ISocialAppsService sut = new SocialAppsServiceImpl(dataSvc, verifier,
+                dataParser, cissaDataProvider, Mock.Of<IHttpService>());
+
+            //Act
+            var ex = await Assert.ThrowsAnyAsync<ArgumentException>
+                (async () => await sut.CreateApplication(json_data, paymentTypeCode));
+
+            //Assert
+            ex.ParamName.Should().Be(nameof(paymentTypeCode));
+            ex.Message.Should().StartWith(ErrorMessageResource.IllegalDataProvidedError);
+        }
+
+        [Fact]
+        public async Task SetApplicationResult_WhenCalled_ThrowsNullException()
+        {
+            //Arrange
+            setApplicationResultDTO? dto = null;
+            var dataSvc = Mock.Of<IDataService>();
+            var verifier = Mock.Of<ILogicVerifier>();
+            var dataParser = Mock.Of<IInputJsonParser>();
+            var cissaDataProvider = Mock.Of<ICissaDataProvider>();
+            ISocialAppsService sut = new SocialAppsServiceImpl(dataSvc, verifier, dataParser,
+                cissaDataProvider, Mock.Of<IHttpService>());
+
+            //Act
+            var ex = await Assert.ThrowsAnyAsync<ArgumentNullException>
+                (async () => await sut.SetApplicationResult(dto));
+
+            //Assert
+            ex.ParamName.Should().Be(nameof(dto));
+            ex.Message.Should().StartWith(ErrorMessageResource.NullDataProvidedError);
+        }
+
+        [Fact]
+        public async Task SetApplicationResult_WhenCalled_ThrowsPropsNullException()
+        {
+            //Arrange
+            setApplicationResultDTO? dto = new();
+            var dataSvc = Mock.Of<IDataService>();
+            var verifier = Mock.Of<ILogicVerifier>();
+            var dataParser = Mock.Of<IInputJsonParser>();
+            var cissaDataProvider = Mock.Of<ICissaDataProvider>();
+            ISocialAppsService sut = new SocialAppsServiceImpl(dataSvc, verifier, dataParser,
+                cissaDataProvider, Mock.Of<IHttpService>());
+
+            //Act
+            var ex = await Assert.ThrowsAnyAsync<ArgumentNullException>
+                (async () => await sut.SetApplicationResult(dto));
+
+            //Assert
+            ex.ParamName.Should().Be("appId,Decision");
+            ex.Message.Should().StartWith(ErrorMessageResource.NullDataProvidedError);
         }
     }
 }
