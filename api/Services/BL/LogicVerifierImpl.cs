@@ -21,7 +21,7 @@ namespace api.Services.BL
             _propertyVerifier = propertyVerifier;
         }
 
-        public void VerifyInputModel(ubkInputModelDTO? inputModel, string paymentTypeCode)
+        public void VerifyInputModel(InputModelDTO? inputModel, string paymentTypeCode)
         {
             if (inputModel == null)
                 throw new DomainException(ErrorMessageResource.JsonObjectNullError);

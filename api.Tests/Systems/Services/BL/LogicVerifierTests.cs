@@ -31,7 +31,7 @@ namespace api.Tests.Systems.Services.BL
         public void VerifyParsedJsonData_WhenCalled_ThrowsObjectNullError()
         {
             //Arrange
-            ubkInputModelDTO? nullJson = null;
+            InputModelDTO? nullJson = null;
             ILogicVerifier sut = new LogicVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
 
             //Act
@@ -45,7 +45,7 @@ namespace api.Tests.Systems.Services.BL
         public void VerifyParsedJsonData_WhenCalled_ThrowsIDNullError()
         {
             //Arrange
-            ubkInputModelDTO? nullJson = new();
+            InputModelDTO? nullJson = new();
             ILogicVerifier sut = new LogicVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
 
             //Act
@@ -60,7 +60,7 @@ namespace api.Tests.Systems.Services.BL
         public void VerifyParsedJsonData_WhenCalled_ReturnsOK()
         {
             //Arrange
-            ubkInputModelDTO? nullJson = new() { ID = 123 };
+            InputModelDTO? nullJson = new() { ID = 123 };
             ILogicVerifier sut = new LogicVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
 
             //Act
