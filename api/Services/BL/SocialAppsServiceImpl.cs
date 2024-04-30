@@ -37,7 +37,7 @@ namespace api.Services.BL
 
             _dataParser.VerifyJson(json);
 
-            var parsedInputData = _dataParser.ParseToModel<ubkInputModelDTO>(json);
+            var parsedInputData = _dataParser.ParseToModel<InputModelDTO>(json);
             _logicVerifier.VerifyInputModel(parsedInputData, paymentTypeCode);
             var newPkgId = await _dataSvc.SaveJson(json);
             (var regNo, var appId) =

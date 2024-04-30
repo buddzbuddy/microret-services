@@ -147,5 +147,36 @@ namespace api.Tests.Systems.Apis.V1.Controllers
             responseObj?.errors[0].message.Should()
                 .StartWith(ErrorMessageResource.JsonInvalidError);
         }
+
+        [Fact]
+        public async Task CreateApplication_WhenInvoked_Returns400_JsonInvalidError()
+        {
+            //Arrange
+            var application = ApplicationHelper.CreateApplication();
+            var client = application.CreateHttpClientJson();
+            var paymentTypeCode = StaticReferences.PAYMENT_TYPE_UBK;
+            var json = JsonStorage.Get("InputApplicationModel.json");
+            //Act
+            var response = await client.PostAsync(
+                $"api/v1/social-apps/send-application/{paymentTypeCode}",
+                ApplicationHelper.CreateBodyContent("123"));
+
+            //Assert
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            var responseBody = await response.Content.ReadAsStringAsync();
+            var _responseType = new
+            {
+                errors = new[]
+                {
+                    new
+                    {
+                        message = string.Empty
+                    }
+                }
+            };
+            var responseObj = JsonConvert.DeserializeAnonymousType(responseBody, _responseType);
+            responseObj?.errors[0].message.Should()
+                .StartWith(ErrorMessageResource.JsonInvalidError);
+        }
     }
 }
