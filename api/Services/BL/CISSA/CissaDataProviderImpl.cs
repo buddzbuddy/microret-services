@@ -24,7 +24,7 @@ namespace api.Services.BL.CISSA
         }
 
         public async Task<(string regNo, Guid appId)>
-            CreateCissaApplication(PersonDetailsDTO applicantPerson, Guid? paymentType)
+            CreateCissaApplication(PersonDetailsDTO applicantPerson, Guid? paymentType = null)
         {
             (var orgId, var userId, var orgPositionId, var orgCode, var regNoLastValue) = await
                 DefineUserCredsFromAddressData(applicantPerson.ResidentialAddress);

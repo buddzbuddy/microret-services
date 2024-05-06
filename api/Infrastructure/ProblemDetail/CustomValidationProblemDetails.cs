@@ -26,7 +26,7 @@ namespace api.Infrastructure.ProblemDetail
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public new string Detail { get; set; }
 
-        [JsonPropertyName("errors")]
+        [JsonPropertyName("Errors")]
         public new IEnumerable<ValidationError> Errors { get; } = new List<ValidationError>();
 
         private List<ValidationError> ConvertModelStateErrorsToValidationErrors(ModelStateDictionary modelStateDictionary)

@@ -79,7 +79,7 @@ namespace api.Tests.Systems.Services.BL.Verifiers
         public void VerifyFamilyMembers_WhenCalled_ThrowsFamilyMembersNullError()
         {
             //Arrange
-            ubkInputModelDTO.FamilyMemberDTO[]? familyMembers = null;
+            FamilyMemberDTO[]? familyMembers = null;
             IPersonalIdentityVerifier sut =
                 new PersonalIdentityVerifierImpl(Mock.Of<IPassportDataVerifier>(),
                 Mock.Of<IPersonDataVerifier>(), Mock.Of<IPinVerifier>(), Mock.Of<IDataHelper>());
@@ -95,7 +95,7 @@ namespace api.Tests.Systems.Services.BL.Verifiers
         public void VerifyFamilyMembers_WhenCalled_ThrowsFamilyMemberRoleNullError()
         {
             //Arrange
-            var familyMembers = new ubkInputModelDTO.FamilyMemberDTO[]
+            var familyMembers = new FamilyMemberDTO[]
             { new() { pin = "123", lastname = "some", firstname = "some", patronymic = "some",
                 roleId = 123 } };
             IPersonalIdentityVerifier sut =
@@ -114,7 +114,7 @@ namespace api.Tests.Systems.Services.BL.Verifiers
         public void VerifyFamilyMembers_WhenCalled_ThrowsFamilyMemberRoleIdNullError()
         {
             //Arrange
-            var familyMembers = new ubkInputModelDTO.FamilyMemberDTO[]
+            var familyMembers = new FamilyMemberDTO[]
             { new() { pin = "123", lastname = "some", firstname = "some", patronymic = "some",
                 role = "some" } };
             IPersonalIdentityVerifier sut =
@@ -134,7 +134,7 @@ namespace api.Tests.Systems.Services.BL.Verifiers
         {
             //Arrange
             var pin = "123";
-            var familyMembers = new ubkInputModelDTO.FamilyMemberDTO[]
+            var familyMembers = new FamilyMemberDTO[]
             { new() { pin = pin, lastname = "some", firstname = "some", patronymic = "some",
                 role = "some", roleId = 123 } };
 
@@ -156,7 +156,7 @@ namespace api.Tests.Systems.Services.BL.Verifiers
         {
             //Arrange
             var pin = "123";
-            var familyMembers = new ubkInputModelDTO.FamilyMemberDTO[]
+            var familyMembers = new FamilyMemberDTO[]
             { new() { pin = pin, lastname = "some", firstname = "some", patronymic = "some",
                 role = "some", roleId = 123, BirthActByPinInfo = new() } };
 

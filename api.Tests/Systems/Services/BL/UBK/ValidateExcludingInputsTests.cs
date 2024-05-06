@@ -16,7 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
-using static api.Models.BL.ubkInputModelDTO;
+using static api.Models.BL.InputModelDTO;
 
 namespace api.Tests.Systems.Services.BL.UBK
 {

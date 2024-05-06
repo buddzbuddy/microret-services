@@ -4,6 +4,6 @@ namespace api.Contracts.BL
 {
     public interface ILogicVerifier
     {
-        void VerifyInputModel(ubkInputModelDTO? inputModel, string paymentTypeCode);
+        void VerifyInputModel(InputModelDTO? inputModel, string paymentTypeCode);
     }
 }
