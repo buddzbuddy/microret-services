@@ -32,7 +32,7 @@ namespace api.Services.BL.Verifiers
             verifyPassportAndPersonInfo(applicant.PassportDataInfo);
             verifyFactAddress(applicant.ResidentialAddress);
         }
-        public void VerifyFamilyMembers(InputModelDTO.FamilyMemberDTO[]? familyMembers)
+        public void VerifyFamilyMembers(FamilyMemberDTO[]? familyMembers)
         {
             if (familyMembers == null || familyMembers.Length == 0)
                 throw new ArgumentNullException(nameof(familyMembers),

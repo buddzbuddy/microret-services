@@ -1,4 +1,8 @@
-﻿using api.Resources;
+﻿using api.Contracts.BL;
+using api.Contracts.BL.CISSA;
+using api.Contracts.BL.Verifiers;
+using api.Models.BL;
+using api.Resources;
 using api.Tests.Helpers;
 using api.Tests.Infrastructure;
 using api.Utils;
@@ -149,17 +153,21 @@ namespace api.Tests.Systems.Apis.V1.Controllers
         }
 
         [Fact]
-        public async Task CreateApplication_WhenInvoked_Returns400_JsonInvalidError()
+        public async Task CreateApplication_WhenInvoked_Returns400_2_JsonEmptyError()
         {
             //Arrange
+            var json = JsonStorage.Get("EmptyInputApplicationModel.json");
+            _output.WriteLine(json);
+            var inputJsonParserMock = new Mock<IInputJsonParser>();
+            inputJsonParserMock.Setup(svc => svc.ParseToModel<InputModelDTO>(json)).Returns(new InputModelDTO());
             var application = ApplicationHelper.CreateApplication();
+            //application.MockService(inputJsonParserMock);
             var client = application.CreateHttpClientJson();
             var paymentTypeCode = StaticReferences.PAYMENT_TYPE_UBK;
-            var json = JsonStorage.Get("InputApplicationModel.json");
             //Act
             var response = await client.PostAsync(
                 $"api/v1/social-apps/send-application/{paymentTypeCode}",
-                ApplicationHelper.CreateBodyContent("123"));
+                ApplicationHelper.CreateBodyContent(json));
 
             //Assert
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
@@ -176,7 +184,76 @@ namespace api.Tests.Systems.Apis.V1.Controllers
             };
             var responseObj = JsonConvert.DeserializeAnonymousType(responseBody, _responseType);
             responseObj?.errors[0].message.Should()
-                .StartWith(ErrorMessageResource.JsonInvalidError);
+                .StartWith(ErrorMessageResource.JsonEmptyError);
+        }
+
+        [Fact]
+        public async Task CreateApplication_WhenInvoked_Returns400_ID_NullError()
+        {
+            //Arrange
+            var json = JsonStorage.Get("ID_NULL_InputApplicationModel.json");
+            var inputJsonParserMock = new Mock<IInputJsonParser>();
+            inputJsonParserMock.Setup(svc => svc.ParseToModel<InputModelDTO>(json)).Returns(new InputModelDTO());
+            var application = ApplicationHelper.CreateApplication();
+            //application.MockService(inputJsonParserMock);
+            var client = application.CreateHttpClientJson();
+            var paymentTypeCode = StaticReferences.PAYMENT_TYPE_UBK;
+            //Act
+            var response = await client.PostAsync(
+                $"api/v1/social-apps/send-application/{paymentTypeCode}",
+                ApplicationHelper.CreateBodyContent(json));
+
+            //Assert
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            var responseBody = await response.Content.ReadAsStringAsync();
+            var _responseType = new
+            {
+                errors = new[]
+                {
+                    new
+                    {
+                        message = string.Empty
+                    }
+                }
+            };
+            var responseObj = JsonConvert.DeserializeAnonymousType(responseBody, _responseType);
+            responseObj?.errors[0].message.Should()
+                .StartWith(ErrorMessageResource.NullDataProvidedError);
+            responseObj?.errors[0].message.Should()
+                .Contain("ID");
+        }
+
+        [Fact]
+        public async Task CreateApplication_WhenInvoked_ReturnsSuccess()
+        {
+            //Arrange
+            var json = JsonStorage.Get("ValidInputApplicationModel.json");
+            var newPkgId = 123;
+            var regNo = "123";
+            var appId = Guid.NewGuid();
+            var dataSvcMock = new Mock<IDataService>();
+            dataSvcMock.Setup(svc => svc.SaveJson(It.IsAny<string>())).ReturnsAsync(newPkgId);
+            var cissaDataProviderMock = new Mock<ICissaDataProvider>();
+            cissaDataProviderMock.Setup(svc => svc.CreateCissaApplication(It.IsAny<PersonDetailsDTO>(), It.IsAny<Guid>())).ReturnsAsync((regNo, appId));
+            dataSvcMock.Setup(svc => svc.UpdatePackageInfo(newPkgId, regNo, appId));
+            
+            var application = ApplicationHelper.CreateApplication();
+            application.Mock(Mock.Of<ILogicVerifier>()).Mock(dataSvcMock.Object).Mock(cissaDataProviderMock.Object);
+
+            var client = application.CreateHttpClientJson();
+            var paymentTypeCode = StaticReferences.PAYMENT_TYPE_UBK;
+            //Act
+            var response = await client.PostAsync(
+                $"api/v1/social-apps/send-application/{paymentTypeCode}",
+                ApplicationHelper.CreateBodyContent(json));
+
+            //Assert
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            var responseBody = await response.Content.ReadAsStringAsync();
+            _output.WriteLine(responseBody);
+            var responseObj = JsonConvert.DeserializeObject<createApplicationResultDTO>(responseBody);
+            responseObj?.appId.Should().Be(appId);
+            responseObj?.regNo.Should().Be(regNo);
         }
     }
 }

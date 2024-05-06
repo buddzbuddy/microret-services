@@ -8,11 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Fixtures\JsonFiles\InputApplicationModel.json" />
+    <None Remove="Fixtures\JsonFiles\EmptyInputApplicationModel.json" />
+    <None Remove="Fixtures\JsonFiles\ID_NULL_InputApplicationModel.json" />
+    <None Remove="Fixtures\JsonFiles\ValidInputApplicationModel.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Fixtures\JsonFiles\InputApplicationModel.json" />
+    <EmbeddedResource Include="Fixtures\JsonFiles\ValidInputApplicationModel.json" />
+    <EmbeddedResource Include="Fixtures\JsonFiles\ID_NULL_InputApplicationModel.json" />
+    <EmbeddedResource Include="Fixtures\JsonFiles\EmptyInputApplicationModel.json" />
   </ItemGroup>
 
   <ItemGroup>

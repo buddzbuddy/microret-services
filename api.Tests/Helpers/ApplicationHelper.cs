@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -25,22 +26,17 @@ namespace api.Tests.Helpers
             {
                 builder.UseEnvironment("Test");
             });
-        public static WebApplicationFactory<Program>
-            CreateApplication(MockServices mockServices)
+
+        public static WebApplicationFactory<Program> Mock<T>(this WebApplicationFactory<Program> application, T mockedSvc) where T : class
         {
-            var application = createApplicationDefault();
-            application.WithWebHostBuilder(builder =>
+            return application.WithWebHostBuilder(builder =>
             {
                 builder.ConfigureTestServices(services =>
                 {
-                    foreach ((var interfaceType, var serviceMock) in mockServices.GetMocks())
-                    {
-                        services.Remove(services.First(d => d.ServiceType == interfaceType));
-                        services.AddScoped(typeof(IInputJsonParser), (servProv) => serviceMock);
-                    }
+                    services.Remove(services.First(d => d.ServiceType == typeof(T)));
+                    services.AddScoped(typeof(T), (servProv) => mockedSvc);
                 });
             });
-            return application;
         }
 
         public static HttpClient CreateHttpClientJson(

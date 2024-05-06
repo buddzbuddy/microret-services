@@ -24,7 +24,8 @@ namespace api.Services.BL
         public void VerifyInputModel(InputModelDTO? inputModel, string paymentTypeCode)
         {
             if (inputModel == null)
-                throw new DomainException(ErrorMessageResource.JsonObjectNullError);
+                throw new ArgumentNullException(nameof(inputModel),
+                    ErrorMessageResource.NullDataProvidedError);
             if (inputModel.ID == null)
                 throw new ArgumentNullException(nameof(inputModel.ID),
                     ErrorMessageResource.NullDataProvidedError);

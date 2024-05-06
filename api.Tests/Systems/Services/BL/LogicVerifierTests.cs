@@ -31,14 +31,15 @@ namespace api.Tests.Systems.Services.BL
         public void VerifyParsedJsonData_WhenCalled_ThrowsObjectNullError()
         {
             //Arrange
-            InputModelDTO? nullJson = null;
+            InputModelDTO? inputModel = null;
             ILogicVerifier sut = new LogicVerifierImpl(Mock.Of<IPersonalIdentityVerifier>(), Mock.Of<IPropertyVerifier>());
 
             //Act
-            var ex = Assert.Throws<DomainException>(() => sut.VerifyInputModel(nullJson, StaticReferences.PAYMENT_TYPE_UBK));
+            var ex = Assert.Throws<ArgumentNullException>(() => sut.VerifyInputModel(inputModel, StaticReferences.PAYMENT_TYPE_UBK));
 
             //Assert
-            ex.Message.Should().Be(ErrorMessageResource.JsonObjectNullError);
+            ex.ParamName.Should().Be(nameof(inputModel));
+            ex.Message.Should().StartWith(ErrorMessageResource.NullDataProvidedError);
         }
 
         [Fact]
