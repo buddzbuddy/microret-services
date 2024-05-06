@@ -26,7 +26,7 @@ namespace api.Tests.Systems.Controllers
         [Fact]
         public void VerifyControllers()
         {
-            var app = ApplicationHelper.GetWebApplication();
+            var app = ApplicationHelper.CreateApplication();
             var controllersAssembly = typeof(socialAppsController).Assembly;
             var controllers = controllersAssembly.ExportedTypes.Where(x => typeof(ControllerBase).IsAssignableFrom(x));
             var activator = app.Services.GetService<IControllerActivator>();

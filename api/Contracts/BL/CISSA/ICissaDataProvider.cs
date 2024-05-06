@@ -1,5 +1,5 @@
 ﻿using api.Models.BL;
-using static api.Models.BL.ubkInputModelDTO;
+using static api.Models.BL.InputModelDTO;
 
 namespace api.Contracts.BL.CISSA
 {

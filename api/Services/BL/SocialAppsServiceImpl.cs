@@ -25,22 +25,24 @@ namespace api.Services.BL
 
         public async Task<(string regNo, Guid appId)> CreateApplication(string json, string paymentTypeCode)
         {
-            Guid? paymenType = null;
+            Guid? paymentType = null;
             if(paymentTypeCode == StaticReferences.PAYMENT_TYPE_UBK)
             {
-                paymenType = StaticCissaReferences.PAYMENT_TYPE_UBK;
+                paymentType = StaticCissaReferences.PAYMENT_TYPE_UBK;
             }
             else if (paymentTypeCode != StaticReferences.PAYMENT_TYPE_ESP)
             {
                 throw new ArgumentException(ErrorMessageResource.IllegalDataProvidedError, nameof(paymentTypeCode));
             }
+
             _dataParser.VerifyJson(json);
-            var parsedInputData = _dataParser.ParseToModel<ubkInputModelDTO>(json);
+
+            var parsedInputData = _dataParser.ParseToModel<InputModelDTO>(json);
             _logicVerifier.VerifyInputModel(parsedInputData, paymentTypeCode);
             var newPkgId = await _dataSvc.SaveJson(json);
             (var regNo, var appId) =
                 await _cissaDataProvider.CreateCissaApplication(parsedInputData!.Applicant!,
-                paymenType);
+                paymentType);
             await _dataSvc.UpdatePackageInfo(newPkgId, regNo, appId);
 
             return (regNo, appId);
