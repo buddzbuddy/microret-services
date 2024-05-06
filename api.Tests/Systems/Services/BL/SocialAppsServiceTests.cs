@@ -39,7 +39,7 @@ namespace api.Tests.Systems.Services.BL
             var dataSvc = Mock.Of<IDataService>();
             var verifier = Mock.Of<ILogicVerifier>();
             var dataParserMock = new Mock<IInputJsonParser>();
-            dataParserMock.Setup(s => s.ParseToModel<ubkInputModelDTO>(json_data)).Returns(new ubkInputModelDTO());
+            dataParserMock.Setup(s => s.ParseToModel<InputModelDTO>(json_data)).Returns(new InputModelDTO());
             var mockCissaDataProvider = new Mock<ICissaDataProvider>();
             mockCissaDataProvider.Setup(s =>
             s.CreateCissaApplication(It.IsAny<PersonDetailsDTO>(),
