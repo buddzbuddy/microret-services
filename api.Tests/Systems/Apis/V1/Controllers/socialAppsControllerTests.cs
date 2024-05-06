@@ -7,15 +7,9 @@ using api.Tests.Helpers;
 using api.Tests.Infrastructure;
 using api.Utils;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using Moq;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit.Abstractions;
 
 namespace api.Tests.Systems.Apis.V1.Controllers
@@ -234,11 +228,16 @@ namespace api.Tests.Systems.Apis.V1.Controllers
             var dataSvcMock = new Mock<IDataService>();
             dataSvcMock.Setup(svc => svc.SaveJson(It.IsAny<string>())).ReturnsAsync(newPkgId);
             var cissaDataProviderMock = new Mock<ICissaDataProvider>();
-            cissaDataProviderMock.Setup(svc => svc.CreateCissaApplication(It.IsAny<PersonDetailsDTO>(), It.IsAny<Guid>())).ReturnsAsync((regNo, appId));
+            cissaDataProviderMock.Setup(svc => svc.CreateCissaApplication(It.IsAny<PersonDetailsDTO>(), StaticCissaReferences.PAYMENT_TYPE_UBK)).ReturnsAsync((regNo, appId));
             dataSvcMock.Setup(svc => svc.UpdatePackageInfo(newPkgId, regNo, appId));
             
-            var application = ApplicationHelper.CreateApplication();
-            application.Mock(Mock.Of<ILogicVerifier>()).Mock(dataSvcMock.Object).Mock(cissaDataProviderMock.Object);
+            var application = ApplicationHelper.CreateApplicationMock(
+                new()
+                {
+                    (typeof(ILogicVerifier), Mock.Of<ILogicVerifier>()),
+                    (typeof(IDataService), dataSvcMock.Object),
+                    (typeof(ICissaDataProvider), cissaDataProviderMock.Object),
+                });
 
             var client = application.CreateHttpClientJson();
             var paymentTypeCode = StaticReferences.PAYMENT_TYPE_UBK;
@@ -248,9 +247,8 @@ namespace api.Tests.Systems.Apis.V1.Controllers
                 ApplicationHelper.CreateBodyContent(json));
 
             //Assert
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
             var responseBody = await response.Content.ReadAsStringAsync();
-            _output.WriteLine(responseBody);
             var responseObj = JsonConvert.DeserializeObject<createApplicationResultDTO>(responseBody);
             responseObj?.appId.Should().Be(appId);
             responseObj?.regNo.Should().Be(regNo);

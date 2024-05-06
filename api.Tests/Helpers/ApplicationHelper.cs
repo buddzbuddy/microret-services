@@ -1,40 +1,33 @@
-﻿using api.Contracts.BL;
-using api.Contracts.BL.CISSA;
-using api.Services.BL.CISSA;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
-using Moq;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
-using static api.Tests.Helpers.ApplicationHelper;
 
 namespace api.Tests.Helpers
 {
     public static class ApplicationHelper
     {
-        public static WebApplicationFactory<Program> CreateApplication() 
-            => createApplicationDefault();
-        static WebApplicationFactory<Program> createApplicationDefault()
+        public static WebApplicationFactory<Program> CreateApplication()
             => new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
             {
                 builder.UseEnvironment("Test");
             });
-
-        public static WebApplicationFactory<Program> Mock<T>(this WebApplicationFactory<Program> application, T mockedSvc) where T : class
+        public static WebApplicationFactory<Program> CreateApplicationMock(List<(Type _interface, dynamic implementer)> mocks)
         {
-            return application.WithWebHostBuilder(builder =>
+            return new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
             {
+                builder.UseEnvironment("Test");
                 builder.ConfigureTestServices(services =>
                 {
-                    services.Remove(services.First(d => d.ServiceType == typeof(T)));
-                    services.AddScoped(typeof(T), (servProv) => mockedSvc);
+                    foreach ((Type i, dynamic impl) in mocks)
+                    {
+                        if (!services.Remove(services.First(d => d.ServiceType == i)))
+                            throw new InvalidOperationException($"Cannot remove service {i.Name} prior to mock");
+                        services.AddScoped(i, (servProv) => impl);
+                    }
                 });
             });
         }
