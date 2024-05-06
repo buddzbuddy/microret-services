@@ -1,6 +1,7 @@
 ﻿using api.Contracts.BL;
 using api.Contracts.BL.CISSA;
 using api.Contracts.BL.Verifiers;
+using api.Contracts.Helpers;
 using api.Models.BL;
 using api.Resources;
 using api.Tests.Helpers;
@@ -252,6 +253,35 @@ namespace api.Tests.Systems.Apis.V1.Controllers
             var responseObj = JsonConvert.DeserializeObject<createApplicationResultDTO>(responseBody);
             responseObj?.appId.Should().Be(appId);
             responseObj?.regNo.Should().Be(regNo);
+        }
+
+        [Fact]
+        public async Task SetResult_WhenInvoked_ReturnSuccess()
+        {
+            //Arrange
+            var appId = new Guid("{39C0006F-90D8-4D00-85A3-F2443A1FA404}");
+            var dataSvcMock = new Mock<IDataService>();
+            dataSvcMock.Setup(svc => svc.GetOriginAppID(appId)).ReturnsAsync(123);
+
+            var application = ApplicationHelper.CreateApplicationMock(
+                new()
+                {
+                    (typeof(IDataService), dataSvcMock.Object),
+                    (typeof(IHttpService), Mock.Of<IHttpService>())
+                });
+            var client = application.CreateHttpClientJson();
+            var request = new setApplicationResultDTO
+            {
+                appId = appId,
+                Decision = "some decision"
+            };
+
+            //Act
+            var response = await client.PostAsync(
+                $"api/v1/social-apps/set-result",
+                ApplicationHelper.CreateBodyContent(request));
+            //Assert
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
     }
 }
